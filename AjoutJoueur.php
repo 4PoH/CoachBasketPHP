@@ -32,7 +32,7 @@
                                     'photo' => $photo,
                                     'taille' => $taille,
                                     'poids' => $poids,
-                                    'postepref' => $postepref
+                                    'postepref' => $postepref,
                                     'commentaire' => $commentaire
 
                                 ));       
