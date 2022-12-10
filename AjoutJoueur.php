@@ -9,10 +9,11 @@
             $postepref = $_POST['postepref'];
             $commentaire = $_POST['commentaire'];
 
-            $server = 'localhost';
-            $db = 'equipe_basket';
-            $login = 'root';
-            $mdp = '';
+            $server = '127.0.0.1:3306';
+            $db = 'fzqewwdn_CoachBasket';
+            $login = 'admin';
+            $mdp = 'ninobonnechance$';
+
                 ///Connexion au serveur MySQL
                 try {
                 $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
