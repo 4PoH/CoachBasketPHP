@@ -3,20 +3,25 @@
  <body>
     <h1> Joueur </h1>
     <form action="ajoutJoueur.php" method="post">
-            Numero de licence : <input type="text" name="numLicence"> <br \> 
+            Numero Licence : <input type="text" name="numLicence"><br \> 
             Nom : <input type="text" name="nom"> <br \> 
             Prenom : <input type="text" name="prenom"> <br \>
             Date de naissance : <input type="text" name="dateN"> <br \> 
             Photo : <input type="text" name="photo"> <br \> 
             Taille : <input type="int" name="taille"> <br \> 
             Poids : <input type="int" name="poids"> <br \> 
-            Poste prefere : <input type="text" name="postPref"> <br \> 
-            Commentaire : <input type="text" name="commentaire"> <br \> 
+            Poste prefere : <input type="text" name="postePref"> <br \> 
+            Commentaire : <input type="text" name="commentaire"> <br \>
+            Statut : <select name="statut"> 
+                <option>Disponible</option>
+                <option>Blesse(e)</option>
+                <option>En vacance</option>
+            </select> <br \>
         
             <input type="reset" name="" value="Vider">
             <input type="submit" name="" value="Ajouter">
             <input type="submit" name="" value="Rechercher">
-            <input type="submit" name="" value="Modifier (Sûr de ce bouton ?)">
+            <input type="submit" name="" value="Modifier (Sur de ce bouton ?)">
             <input type="submit" name="" value="Supprimer">
 
         </form>    
