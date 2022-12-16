@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
+    <link rel="stylesheet" href="Acceuil.css">
 </head>
 <body>
-    <nav>
+    
+    <div>
+        <h1>CoachBasketAssistant</h1>
+    </div>
+
+    <nav class="Barre">
         <div>
-            <button type="button">Insérer un nouveau joueur</button>
+            <button type="button"  class="BoutonMenu">Insérer un nouveau joueur</button>
         </div>
         <div>
-            <button type="button">Insérer une nouvelle rencontre</button>
+            <button type="button" class="BoutonMenu">Insérer une nouvelle rencontre</button>
+        </div>
+
+        <div>
+            <button type="button" class="BoutonMenu">Ajouter des notes post rencontre</button>
         </div>
         <div>
-            <button type="button">Ajouter des notes post rencontres</button>
-        </div>
-        <div>
-            <button type="button">Supprimer un joueur</button>
+            <button type="button" class="BoutonMenu">Rechercher un joueur</button>
         </div>
     </nav>
 
-    <div>
-        <div>
+    <div class="DivMatch">
+        <div class="TitreMatch">
             <h1>Dernier match ajouté</h1>
         </div>
 
-        <div>
-            <div>
+        <div class="DivEquipe">
+            <div class="TitreEquipe">
                 <h1>Nous</h1>
             </div>
 
-            <div>
-                <img src="" alt="Logo de notre club">
+            <div class="DivImage">
+                <img src="LogoEquipe.png" alt="Logo de notre club" class="LogoEquipe">
             </div>
 
             <div>
@@ -39,8 +46,13 @@
             </div>
         </div>
 
-        <div>
-            <div>
+        <div class="DivEquipe">
+
+            <div class="DivImage">
+                <img src="LogoEquipe.png" alt="Logo de L'équipe adverse" class="LogoEquipe">
+            </div>
+
+            <div class="TitreEquipe">
                 <h1>Equipe adverse</h1>
             </div>
 

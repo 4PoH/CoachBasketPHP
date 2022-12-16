@@ -12,8 +12,9 @@ WHERE idStatus = 1
 INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Photo, Taille, Poids, PostePref, Commentaire, idStatus)
     VALUES(:numLicence, :prenom, :nom, :dateN, :photo, :taille, :poids, :postePref, :commentaire, :statut)
 
-/* Rechercher un joueur par n'importe quel champs*/
+/* Rechercher un joueur par n'importe nom et prenom soundex*/
 SELECT *
 FROM joueur
-WHERE Prenom = soundex(prenom_saisi)
-AND Nom = soundex(nom_saisi)
+WHERE soundex(prenom) = soundex(prenom_saisi)
+AND soundex(nom) = soundex(nom_saisi)
+

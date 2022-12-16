@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Consultation</title>
+        <link rel="stylesheet" href="Acceuil.css">
+    </head>
+ <body>
+    <div>
+        <h1> Joueur </h1>
+    </div>
+    
+    <div class="Formulaire">
+        <form action="ajoutJoueur.php" method="post">
+                <p>Numéro de numéro de licence : </p> <input type="text" name="numLicence"><br \> 
+                <p> Nom : </p> <input type="text" name="nom"> <br \> 
+                <p> Prenom : </p> <input type="text" name="prenom"> <br \>
+                Date de naissance : <input type="text" name="dateN"> <br \> 
+                Photo : <input type="text" name="photo"> <br \> 
+                Taille : <input type="int" name="taille"> <br \> 
+                Poids : <input type="int" name="poids"> <br \> 
+                Poste prefere : <input type="text" name="postePref"> <br \> 
+                Commentaire : <input type="text" name="commentaire"> <br \>
+                Statut : <select name="statut"> 
+                    <option>Disponible</option>
+                    <option>Blesse(e)</option>
+                    <option>En vacance</option>
+                </select> <br \>
+            
+                <input type="reset" name="" value="Vider">
+                <input type="submit" name="" value="Ajouter">
+                <input type="submit" name="" value="Rechercher">
+                <input type="submit" name="" value="Modifier (Sur de ce bouton ?)">
+                <input type="submit" name="" value="Supprimer">
+
+            </form>
+        </div>
+    </body>
+</html>
