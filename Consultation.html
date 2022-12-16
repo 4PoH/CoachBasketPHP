@@ -6,32 +6,56 @@
         <link rel="stylesheet" href="Acceuil.css">
     </head>
  <body>
-    <div>
-        <h1> Joueur </h1>
+    <div class="TitreSelection">
+        <h1>Consultation</h1>
     </div>
     
-    <div class="Formulaire">
+    <div>
         <form action="ajoutJoueur.php" method="post">
-                <p>Numéro de numéro de licence : </p> <input type="text" name="numLicence"><br \> 
-                <p> Nom : </p> <input type="text" name="nom"> <br \> 
-                <p> Prenom : </p> <input type="text" name="prenom"> <br \>
-                Date de naissance : <input type="text" name="dateN"> <br \> 
-                Photo : <input type="text" name="photo"> <br \> 
-                Taille : <input type="int" name="taille"> <br \> 
-                Poids : <input type="int" name="poids"> <br \> 
-                Poste prefere : <input type="text" name="postePref"> <br \> 
-                Commentaire : <input type="text" name="commentaire"> <br \>
-                Statut : <select name="statut"> 
-                    <option>Disponible</option>
-                    <option>Blesse(e)</option>
-                    <option>En vacance</option>
-                </select> <br \>
-            
-                <input type="reset" name="" value="Vider">
-                <input type="submit" name="" value="Ajouter">
-                <input type="submit" name="" value="Rechercher">
-                <input type="submit" name="" value="Modifier (Sur de ce bouton ?)">
-                <input type="submit" name="" value="Supprimer">
+            <div class="Formulaire">
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Numéro de numéro de licence : </p> <input class="CaseEntree" type="text" name="numLicence">
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Nom : </p> <input class="CaseEntree" type="text" name="nom">
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Prenom : </p> <input class="CaseEntree" type="text" name="prenom">
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="text" name="dateN"> 
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="text" name="photo"> 
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Taille : </p> <input class="CaseEntree" type="int" name="taille"> 
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Poids : </p> <input class="CaseEntree" type="int" name="poids">
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Poste prefere : </p> <input class="CaseEntree" type="text" name="postePref"> 
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire">
+                </div>
+                <div class="LigneFormulaire">
+                        <p class="Libelle">Statut : </p> <select class="CaseEntree" name="statut"> 
+                        <option>Disponible</option>
+                        <option>Blesse(e)</option>
+                        <option>En vacance</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="DivBoutonFormulaire">
+                <input type="reset" name="" value="Vider" class="BoutonFormulaire">
+                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire">
+                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire">
+                <input type="submit" name="" value="Modifier" class="BoutonFormulaire">
+                <input type="submit" name="" value="Supprimer" class="BoutonFormulaire">
+            </div>
 
             </form>
         </div>

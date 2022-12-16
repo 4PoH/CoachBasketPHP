@@ -60,7 +60,41 @@ body {
 }
 
 /* Page Consultation */
-.Formulaire {
+
+.TitreSelection {
     width: 100%;
 }
 
+.Formulaire {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+
+.LigneFormulaire {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CaseEntree {
+    width: 30rem;
+}
+
+.DivBoutonFormulaire {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-evenly;
+}
+
+
+.BoutonFormulaire {
+    width: 15%;
+}
