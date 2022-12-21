@@ -18,3 +18,52 @@ FROM joueur
 WHERE soundex(prenom) = soundex(prenom_saisi)
 AND soundex(nom) = soundex(nom_saisi)
 
+/* Insérer un nouvelle rencontre dans la bdd*/
+INSERT INTO rencontre(IdRencontre, LieuRencontre, Domicile, DateRencontre, HeureRencontre, ScoreEquipe, ScoreAdverse)
+    VALUES(:IdRencontre, :lieuRencontre, :domicile, :dateRencontre, :heureRencontre, :scoreEquipe, :scoreAdverse)
+
+/* Insérer un nouveau status dans la bdd*/
+INSERT INTO rencontre(idStatus, libelleStatut)
+    VALUES(:idStatus, :libelleStatut)
+
+/* Insérer un nouveau adversaire dans la bdd*/
+INSERT INTO adversaire(IdAdversaire, NomAdversaire, LienLogo)
+    VALUES(:idAdversaire, :nomAdversaire, :lienLogo)
+
+/* Rechercher un adverdaires grâce son nom*/
+SELECT *
+from adversaire
+WHERE soundex(NomAdversaire) = soundex(nomAdversaire_saisi)
+
+/* Afficher la liste des joueurs ayant une note supérieure à 3 étoiles*/
+
+SELECT *
+from joueur, participe
+WHERE joueur.numLicence = participe.numLicence
+and participe.notation > 3
+
+/* Afficher la liste des matchs dont l'équipe à gagner*/
+SELECT *
+from rencontre
+where scoreEquipe > scoreAdverse
+
+/* Afficher la liste des matchs dont l'équipe à perdu*/
+SELECT *
+from rencontre
+where scoreEquipe < scoreAdverse
+
+/* Afficher la liste des matchs dont l'équipe à fait match nul*/
+SELECT *
+from rencontre
+where scoreEquipe = scoreAdverse
+
+/* Afficher le pourcentage de match gangner au total*/
+SELECT sum(*)
+from rencontre
+where scoreEquipe = scoreAdverse
+
+/* Afficher la liste des status*/
+SELECT *
+from statut
+
+
