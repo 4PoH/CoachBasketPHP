@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Selection</title>
+    <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
 </head>
 
 <body>

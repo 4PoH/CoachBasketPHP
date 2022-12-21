@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
-        <link rel="stylesheet" href="Site.css">
+        <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
     <body>
 

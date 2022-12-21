@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Consultation</title>
-        <link rel="stylesheet" href="Site.css">
+        <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
  <body>
     <div class="TitrePageConsultation">
         <h1>Consultation</h1>
     </div>
     
-    <?php 
+    <?php
         //Variables pour les données de connexion à la base de donnée
         $server = 'localhost';
         $db = 'coachbasket';
@@ -30,16 +30,7 @@
         $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
 
         ///Exécution de la requête
-        $req->execute(array('numLicence' => $numLicence,
-                'prenom' => $prenom,
-                'nom' => $nom,
-                'dateN' => $dateN,
-                'photo' => $photo,
-                'taille' => $taille,
-                'poids' => $poids,
-                'postePref' => $postePref,
-                'commentaire' => $commentaire,
-                'statut' => $statut)); 
+        $req->execute(array()); 
     ?>
 
     <div>

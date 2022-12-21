@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="Site.css">
+    <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
 </head>
 <body>
     
@@ -38,7 +38,7 @@
             </div>
 
             <div class="DivImage">
-                <img src="LogoEquipe.png" alt="Logo de notre club" class="LogoEquipe">
+                <img src="/CoachBasketPHP/Images/LogoEquipe.png" alt="Logo de notre club" class="LogoEquipe">
             </div>
 
             <div>
@@ -49,7 +49,7 @@
         <div class="DivEquipe">
 
             <div class="DivImage">
-                <img src="LogoEquipe.png" alt="Logo de L'équipe adverse" class="LogoEquipe">
+                <img src="/CoachBasketPHP/Images/LogoEquipe.png" alt="Logo de L'équipe adverse" class="LogoEquipe">
             </div>
 
             <div class="TitreEquipe">
