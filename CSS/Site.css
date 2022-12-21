@@ -86,12 +86,11 @@ body {
 }
 
 .Libelle {
-    width: 50%;
-    background-color: aqua;
+    width: 49%;
 }
 
 .CaseEntree {
-    width: 50%;
+    width: 49%;
 }
 
 .DivBoutonFormulaire {
