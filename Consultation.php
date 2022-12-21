@@ -14,34 +14,34 @@
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Numéro de numéro de licence : </p> <input class="CaseEntreeFormulaire" type="text" name="numLicence">
+                    <p class="Libelle">Numéro de numéro de licence : </p> <input class="CaseEntree" type="text" name="numLicence">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Nom : </p> <input class="CaseEntreeFormulaire" type="text" name="nom">
+                    <p class="Libelle">Nom : </p> <input class="CaseEntree" type="text" name="nom">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Prenom : </p> <input class="CaseEntreeFormulaire" type="text" name="prenom">
+                    <p class="Libelle">Prenom : </p> <input class="CaseEntree" type="text" name="prenom">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Date de naissance : </p> <input class="CaseEntreeFormulaire" type="text" name="dateN"> 
+                    <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="text" name="dateN"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Photo : </p> <input class="CaseEntreeFormulaire" type="text" name="photo"> 
+                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="text" name="photo"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Taille : </p> <input class="CaseEntreeFormulaire" type="int" name="taille"> 
+                    <p class="Libelle">Taille : </p> <input class="CaseEntree" type="int" name="taille"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Poids : </p> <input class="CaseEntreeFormulaire" type="int" name="poids">
+                    <p class="Libelle">Poids : </p> <input class="CaseEntree" type="int" name="poids">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Poste prefere : </p> <input class="CaseEntreeFormulaire" type="text" name="postePref"> 
+                    <p class="Libelle">Poste prefere : </p> <input class="CaseEntree" type="text" name="postePref"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Commentaire : </p> <input class="CaseEntreeFormulaire" type="text" name="commentaire">
+                    <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire">
                 </div>
                 <div class="LigneFormulaire">
-                        <p class="Libelle">Statut : </p> <select class="CaseEntreeFormulaire" name="statut"> 
+                        <p class="Libelle">Statut : </p> <select class="CaseEntree" name="statut"> 
                         <option>Disponible</option>
                         <option>Blesse(e)</option>
                         <option>En vacance</option>

@@ -15,22 +15,22 @@
         <form name="formu" action="ajoutRencontre.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Nom équipe adverse : </p> <input class="CaseEntreeFormulaire" type="text" name="numLicence">
+                    <p class="Libelle">Nom équipe adverse : </p> <input class="CaseEntree" type="text" name="numLicence">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Image logo club</p> <input class="CaseEntreeFormulaire" type="text" name="nom">
+                    <p class="Libelle">Image logo club</p> <input class="CaseEntree" type="text" name="nom">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Date de la rencontre</p> <input class="CaseEntreeFormulaire" type="text" name="prenom">
+                    <p class="Libelle">Date de la rencontre</p> <input class="CaseEntree" type="text" name="prenom">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">heure de la rencontre</p> <input class="CaseEntreeFormulaire" type="text" name="dateN"> 
+                    <p class="Libelle">heure de la rencontre</p> <input class="CaseEntree" type="text" name="dateN"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Notre score</p> <input class="CaseEntreeFormulaire" type="text" name="photo"> 
+                    <p class="Libelle">Notre score</p> <input class="CaseEntree" type="text" name="photo"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Score adverse</p> <input class="CaseEntreeFormulaire" type="int" name="taille"> 
+                    <p class="Libelle">Score adverse</p> <input class="CaseEntree" type="int" name="taille"> 
                 </div>
             </div>
 
