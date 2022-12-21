@@ -10,6 +10,38 @@
         <h1>Consultation</h1>
     </div>
     
+    <?php 
+        //Variables pour les données de connexion à la base de donnée
+        $server = 'localhost';
+        $db = 'coachbasket';
+        $login = 'root';
+        $mdp = '';
+
+        ///Connexion au serveur MySQL
+        try {
+            $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
+        }
+        catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        //Récupération de tout les statuts disponibles
+        ///Préparation de la requête
+        $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
+
+        ///Exécution de la requête
+        $req->execute(array('numLicence' => $numLicence,
+                'prenom' => $prenom,
+                'nom' => $nom,
+                'dateN' => $dateN,
+                'photo' => $photo,
+                'taille' => $taille,
+                'poids' => $poids,
+                'postePref' => $postePref,
+                'commentaire' => $commentaire,
+                'statut' => $statut)); 
+    ?>
+
     <div>
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
@@ -41,11 +73,15 @@
                     <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire">
                 </div>
                 <div class="LigneFormulaire">
-                        <p class="Libelle">Statut : </p> <select class="CaseEntree" name="statut"> 
-                        <option>Disponible</option>
-                        <option>Blesse(e)</option>
-                        <option>En vacance</option>
-                    </select>
+                    <p class="Libelle">Statut : </p>
+                    <input list="Statut" name="Statut">
+                        <datalist id="Statut">
+                            <option value="Chocolate">
+                            <option value="Coconut">
+                            <option value="Mint">
+                            <option value="Strawberry">
+                            <option value="Vanilla">
+                        </datalist>
                 </div>
             </div>
 
