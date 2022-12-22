@@ -103,5 +103,29 @@ body {
 
 
 .BoutonFormulaire {
-    width: 15%;
+    width: 25%;
+}
+
+/* Page de selection */
+
+.Cadre {
+    border: solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Ligne1 {
+    background-color: red;
+    width: 100%;
+}
+
+.NomPrenom {
+    background-color : cyan;
+    width: 59%;
+}
+
+.PhotoJoueur {
+    width: 40%;
+    background-color: aquamarine;
 }

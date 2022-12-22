@@ -7,7 +7,7 @@
     </head>
  <body>
     <div class="TitrePageConsultation">
-        <h1>Consultation</h1>
+        <h1>Nouveau joueur</h1>
     </div>
     
     <?php
@@ -51,6 +51,9 @@
                     <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="date" name="dateN"> 
                 </div>
                 <div class="LigneFormulaire">
+                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="file" accept="image/png, image/jpg" name="photo"> 
+                </div>
+                <div class="LigneFormulaire">
                     <p class="Libelle">Taille : </p> <input class="CaseEntree" type="int" name="taille"> 
                 </div>
                 <div class="LigneFormulaire">
@@ -58,6 +61,9 @@
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Poste prefere : </p> <input class="CaseEntree" type="text" name="postePref"> 
+                </div>
+                <div class="LigneFormulaire">
+                    <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire">
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Statut : </p>

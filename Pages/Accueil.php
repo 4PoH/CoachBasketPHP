@@ -13,7 +13,7 @@
 
     <nav class="Barre">
         <div>
-            <button type="button"  class="BoutonMenu" onclick="window.location.href ='Consultation.php'">Insérer un nouveau joueur </button>
+            <button type="button"  class="BoutonMenu" onclick="window.location.href ='AjoutJoueur.php'">Insérer un nouveau joueur </button>
         </div>
         <div>
             <button type="button" class="BoutonMenu" onclick="window.location.href ='NouvelleRencontre.php'">Insérer une nouvelle rencontre</button>

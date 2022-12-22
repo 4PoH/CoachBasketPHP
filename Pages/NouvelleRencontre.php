@@ -20,7 +20,7 @@
                     <p class="Libelle">Nom équipe adverse : </p> <input class="CaseEntree" type="text" name="NomAdversaire">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Image logo club</p> <input class="CaseEntree" type="text" name="LogoAdversaire">
+                    <p class="Libelle">Image logo club</p> <input class="CaseEntree" type="file" accept="image/png, image/jpg" name="LogoAdversaire">
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Date de la rencontre</p> <input class="CaseEntree" type="date" name="DateRencontre" value= <?php echo $date ?>>

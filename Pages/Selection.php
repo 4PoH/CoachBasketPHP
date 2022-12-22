@@ -7,15 +7,17 @@
 </head>
 
 <body>
-    <div>
-        <div>
-            <div>
-                <p>Nom</p>
+    <div class="Cadre">
+        <div class="Ligne1">
+            <div class="NomPrenom">
+                <div>
+                    <p>Nom</p>
+                </div>
+                <div>
+                    <p>Prenom</p>
+                </div>
             </div>
-            <div>
-                <p>Prenom</p>
-            </div>
-            <div>
+            <div class="PhotoJoueur">
                 Photo
             </div>
         </div>
@@ -33,14 +35,14 @@
                 <p>Taille</p>
             </div>
         </div>
-        <div>
+        <!-- <div>
             <div>
                 <button type="button">Précédent</button>
             </div>
             <div>
                 <button type="button">Suivant</button>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
