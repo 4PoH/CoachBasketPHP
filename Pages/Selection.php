@@ -8,17 +8,20 @@
 
 <body>
     <div class="Cadre">
-        <div class="Ligne1">
-            <div class="NomPrenom">
-                <div>
-                    <p>Nom</p>
-                </div>
-                <div>
-                    <p>Prenom</p>
-                </div>
+        <div class="DivPhotoJoueur">
+            <img src="/CoachBasketPHP/Images/joueur.jpg" alt="Photo du joueur" class="ImageJoueur">
+        </div>
+
+        <div>
+            <p>Notation</p>
+        </div>
+
+        <div class="NomPrenom">
+            <div class="Nom">
+                <p>Nom</p>
             </div>
-            <div class="PhotoJoueur">
-                Photo
+            <div class="Prenom">
+                <p>Prenom</p>
             </div>
         </div>
         <div>
@@ -29,20 +32,12 @@
                 <p>Date de naissance</p>
             </div>
             <div>
-                <p>Poids</p>
+                <p>Poids kg</p>
             </div>
             <div>
-                <p>Taille</p>
+                <p>Taille cm</p>
             </div>
         </div>
-        <!-- <div>
-            <div>
-                <button type="button">Précédent</button>
-            </div>
-            <div>
-                <button type="button">Suivant</button>
-            </div>
-        </div> -->
     </div>
 </body>
 </html>

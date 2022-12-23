@@ -1,9 +1,14 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
+    <link rel="stylesheet" href="../CSS/Site.css">
 </head>
 <body>
     
