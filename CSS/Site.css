@@ -10,6 +10,16 @@ body {
     justify-content: space-around;
 }
 
+/* Header */
+.header {
+    width: 100%;
+}
+
+.ul {
+    list-style: none;
+}
+
+
 /* Page Acceuil */
 .Barre {
     background-color: red;
@@ -103,7 +113,7 @@ body {
 
 
 .BoutonFormulaire {
-    width: 25%;
+    width: 15%;
 }
 
 /* Page de selection */
@@ -130,4 +140,17 @@ body {
 .ImageJoueur {
     max-height: 150px;
     max-width: 150px;
+}
+
+/* Page Login */
+.LoginFormulaire {
+    border: solid blue 2px;
+    margin: 5px;
+}
+
+.Corps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

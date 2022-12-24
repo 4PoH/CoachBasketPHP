@@ -25,12 +25,28 @@ if (est_connecte()){
 </div>
 <?php endif?>
 
-<form action="" method="post">
-    <div>
-        <input type="text" name="nomutilisateur" placeholder="Nom d'utilisateur">
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../CSS/Site.css">
+</head>
+
+<body>
+
+    <?php require '../FonctionPHP/header.php'; ?>
+
+    <div class="Corps">
+        <form action="" method="post" class="LoginFormulaire">
+            <div>
+                <input type="text" name="nomutilisateur" placeholder="Nom d'utilisateur">
+            </div>
+            <div>
+                <input type="password" name="motdepasse" placeholder="Votre mot de passe">
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
     </div>
-    <div>
-        <input type="password" name="motdepasse" placeholder="Votre mot de passe">
-    </div>
-    <button type="submit">Se connecter</button>
-</form>
+</body>
