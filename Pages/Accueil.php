@@ -1,9 +1,14 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="Site.css">
+    <link rel="stylesheet" href="../CSS/Site.css">
 </head>
 <body>
     
@@ -13,7 +18,7 @@
 
     <nav class="Barre">
         <div>
-            <button type="button"  class="BoutonMenu" onclick="window.location.href ='Consultation.php'">Insérer un nouveau joueur </button>
+            <button type="button"  class="BoutonMenu" onclick="window.location.href ='AjoutJoueur.php'">Insérer un nouveau joueur </button>
         </div>
         <div>
             <button type="button" class="BoutonMenu" onclick="window.location.href ='NouvelleRencontre.php'">Insérer une nouvelle rencontre</button>
@@ -38,7 +43,7 @@
             </div>
 
             <div class="DivImage">
-                <img src="LogoEquipe.png" alt="Logo de notre club" class="LogoEquipe">
+                <img src="/CoachBasketPHP/Images/LogoEquipe.png" alt="Logo de notre club" class="LogoEquipe">
             </div>
 
             <div>
@@ -49,7 +54,7 @@
         <div class="DivEquipe">
 
             <div class="DivImage">
-                <img src="LogoEquipe.png" alt="Logo de L'équipe adverse" class="LogoEquipe">
+                <img src="/CoachBasketPHP/Images/LogoEquipe.png" alt="Logo de L'équipe adverse" class="LogoEquipe">
             </div>
 
             <div class="TitreEquipe">

@@ -3,13 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title>Consultation</title>
-        <link rel="stylesheet" href="Site.css">
+        <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
  <body>
     <div class="TitrePageConsultation">
-        <h1>Consultation</h1>
+        <h1>Nouveau joueur</h1>
     </div>
     
+    <?php
+        //Variables pour les données de connexion à la base de donnée
+        $server = 'localhost';
+        $db = 'coachbasket';
+        $login = 'root';
+        $mdp = '';
+
+        ///Connexion au serveur MySQL
+        try {
+            $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
+        }
+        catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        //Récupération de tout les statuts disponibles
+        ///Préparation de la requête
+        $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
+
+        ///Exécution de la requête
+        $req->execute(array());
+
+        $date = date('Y-m-d');
+    ?>
+
     <div>
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
@@ -23,10 +48,10 @@
                     <p class="Libelle">Prenom : </p> <input class="CaseEntree" type="text" name="prenom">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="text" name="dateN"> 
+                    <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="date" name="dateN"> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="text" name="photo"> 
+                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="file" accept="image/png, image/jpg" name="photo"> 
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Taille : </p> <input class="CaseEntree" type="int" name="taille"> 
@@ -41,11 +66,15 @@
                     <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire">
                 </div>
                 <div class="LigneFormulaire">
-                        <p class="Libelle">Statut : </p> <select class="CaseEntree" name="statut"> 
-                        <option>Disponible</option>
-                        <option>Blesse(e)</option>
-                        <option>En vacance</option>
-                    </select>
+                    <p class="Libelle">Statut : </p>
+                    <input list="Statut" name="Statut">
+                        <datalist id="Statut">
+                            <option value="Chocolate">
+                            <option value="Coconut">
+                            <option value="Mint">
+                            <option value="Strawberry">
+                            <option value="Vanilla">
+                        </datalist>
                 </div>
             </div>
 

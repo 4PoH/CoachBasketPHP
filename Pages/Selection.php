@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Selection</title>
+    <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
 </head>
 
 <body>
-    <div>
+    <div class="Cadre">
+        <div class="DivPhotoJoueur">
+            <img src="/CoachBasketPHP/Images/joueur.jpg" alt="Photo du joueur" class="ImageJoueur">
+        </div>
+
         <div>
-            <div>
+            <p>Notation</p>
+        </div>
+
+        <div class="NomPrenom">
+            <div class="Nom">
                 <p>Nom</p>
             </div>
-            <div>
+            <div class="Prenom">
                 <p>Prenom</p>
-            </div>
-            <div>
-                Photo
             </div>
         </div>
         <div>
@@ -26,18 +32,10 @@
                 <p>Date de naissance</p>
             </div>
             <div>
-                <p>Poids</p>
+                <p>Poids kg</p>
             </div>
             <div>
-                <p>Taille</p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <button type="button">Précédent</button>
-            </div>
-            <div>
-                <button type="button">Suivant</button>
+                <p>Taille cm</p>
             </div>
         </div>
     </div>
