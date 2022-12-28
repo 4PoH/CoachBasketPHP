@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `joueur` (
 --
 
 INSERT INTO `joueur` (`NumLicence`, `Prenom`, `Nom`, `DateNaissance`, `Photo`, `Taille`, `Poids`, `PostePref`, `Commentaire`, `idStatus`) VALUES
-('NR343536', 'Nino', 'Rigal', '2003-05-16', '', 179, 74, 'Allié droit', '', 1),
+('NR343536', 'Nino', 'Rigal', '2003-05-16', '', 179, 74, 'Ailier droit', '', 1),
 ('AC950236', 'Alexandre', 'Calmet', '2003-03-09', '', 181, 72, 'Allié gauche', '', 1),
 ('RD847425', 'Raphael', 'Durand', '2000-08-24', '', 184, 91, 'Interieur droit', '', 1),
 ('CS485696', 'Chloe', 'Sechi', '2003-08-14', '', 170, 60, 'Meneur', '', 1),

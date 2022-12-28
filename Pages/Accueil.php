@@ -10,13 +10,11 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="../CSS/Site.css">
 </head>
-<body>
+<body> 
     
-    <div>
-        <h1>CoachBasketAssistant</h1>
-    </div>
+    <?php require '../FonctionPHP/header.php'; ?>
 
-    <nav class="Barre">
+    <div class="Barre">
         <div>
             <button type="button"  class="BoutonMenu" onclick="window.location.href ='AjoutJoueur.php'">Insérer un nouveau joueur </button>
         </div>
@@ -30,7 +28,7 @@
         <div>
             <button type="button" class="BoutonMenu" onclick="window.location.href ='Consultation.php'">Rechercher un joueur</button>
         </div>
-    </nav>
+</div>
 
     <div class="DivMatch">
         <div class="TitreMatch">

@@ -1,3 +1,8 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +12,9 @@
 </head>
 
 <body>
+    
+    <?php require '../FonctionPHP/header.php'; ?>
+
     <div class="Cadre">
         <div class="DivPhotoJoueur">
             <img src="/CoachBasketPHP/Images/joueur.jpg" alt="Photo du joueur" class="ImageJoueur">

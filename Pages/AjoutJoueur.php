@@ -1,3 +1,8 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
@@ -6,6 +11,10 @@
         <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
  <body>
+    
+    <?php require '../FonctionPHP/header.php'; ?>
+
+
     <div class="TitrePageConsultation">
         <h1>Nouveau joueur</h1>
     </div>

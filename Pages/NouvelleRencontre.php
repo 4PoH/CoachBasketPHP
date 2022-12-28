@@ -1,3 +1,8 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -6,6 +11,8 @@
         <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
     <body>
+
+    <?php require '../FonctionPHP/header.php'; ?>
 
     <div class="TitrePageRencontre">
         <h1>Nouvelle Rencontre</h1>
@@ -38,7 +45,7 @@
 
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
-                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='/*Mettre la page requete php ici*/'">
+                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='InsertionJoueur.php'">
             </div>
 
             </form>

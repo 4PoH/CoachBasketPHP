@@ -1,3 +1,8 @@
+<?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+?>
+
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
@@ -5,37 +10,40 @@
         <title>Consultation</title>
         <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
- <body>
-    <div class="TitrePageConsultation">
-        <h1>Consultation</h1>
-    </div>
-    
-    <?php
-        //Variables pour les données de connexion à la base de donnée
-        $server = 'localhost';
-        $db = 'coachbasket';
-        $login = 'root';
-        $mdp = '';
+    <body>
+        
+        <?php require '../FonctionPHP/header.php'; ?>
 
-        ///Connexion au serveur MySQL
-        try {
-            $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-        }
-        catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
 
-        //Récupération de tout les statuts disponibles
-        ///Préparation de la requête
-        $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
+        <div class="TitrePageConsultation">
+            <h1>Consultation</h1>
+        </div>
+        
+        <?php
+            //Variables pour les données de connexion à la base de donnée
+            $server = 'localhost';
+            $db = 'coachbasket';
+            $login = 'root';
+            $mdp = '';
 
-        ///Exécution de la requête
-        $req->execute(array());
+            ///Connexion au serveur MySQL
+            try {
+                $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
+            }
+            catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
 
-        $date = date('Y-m-d');
-    ?>
+            //Récupération de tout les statuts disponibles
+            ///Préparation de la requête
+            $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
 
-    <div>
+            ///Exécution de la requête
+            $req->execute(array());
+
+            $date = date('Y-m-d');
+        ?>
+
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
@@ -74,13 +82,17 @@
 
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
-                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='InsertionJoueur.php'">
-                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire">
+                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire" onclick="formu.action='../RequetePHP/RechercheJoueur.php'">
                 <input type="submit" name="" value="Modifier" class="BoutonFormulaire">
                 <input type="submit" name="" value="Supprimer" class="BoutonFormulaire">
             </div>
+        </form>
 
-            </form>
-        </div>
+        <?php 
+        
+            
+
+        ?>
+
     </body>
 </html>

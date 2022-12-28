@@ -15,8 +15,13 @@ INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Photo, Taille, Poids,
 /* Rechercher un joueur par n'importe nom et prenom soundex*/
 SELECT *
 FROM joueur
-WHERE soundex(prenom) = soundex(prenom_saisi)
-AND soundex(nom) = soundex(nom_saisi)
+WHERE NumLicence = NumLicence_saisi
+OR soundex(prenom) = soundex(prenom_saisi)
+OR soundex(nom) = soundex(nom_saisi)
+OR DateNaissance = DateNaissance_saisi
+OR Taille = Taille_saisi
+OR Poids = Poids_saisi
+OR PostePref = PostePref_saisi
 
 /* Insérer un nouvelle rencontre dans la bdd*/
 INSERT INTO rencontre(IdRencontre, LieuRencontre, Domicile, DateRencontre, HeureRencontre, ScoreEquipe, ScoreAdverse)
@@ -57,7 +62,7 @@ SELECT *
 from rencontre
 where scoreEquipe = scoreAdverse
 
-/* Afficher le pourcentage de match gangner au total*/
+/* Afficher le pourcentage de match gagner au total*/
 SELECT sum(*)
 from rencontre
 where scoreEquipe = scoreAdverse
