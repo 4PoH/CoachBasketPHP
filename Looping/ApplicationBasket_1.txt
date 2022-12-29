@@ -1,0 +1,54 @@
+Sub Create_Tables()
+
+DoCmd.RunSQL "CREATE TABLE Statut(" & _
+   "IDStatut COUNTER," & _
+   "LibelleStatut VARCHAR(50)," & _
+   "PRIMARY KEY(IDStatut)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Adversaire(" & _
+   "IdAdversaire COUNTER," & _
+   "Nom VARCHAR(50)," & _
+   "LienLogo VARCHAR(50)," & _
+   "PRIMARY KEY(IdAdversaire)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Joueur(" & _
+   "NumLicense CHAR(8)," & _
+   "Photo VARCHAR(50)," & _
+   "Commentaire VARCHAR(300)," & _
+   "Taille BYTE NOT NULL," & _
+   "Poids BYTE NOT NULL," & _
+   "PostePref VARCHAR(50)," & _
+   "DateDeNaissance DATE NOT NULL," & _
+   "Nom VARCHAR(50) NOT NULL," & _
+   "Prenom VARCHAR(50) NOT NULL," & _
+   "IDStatut INT NOT NULL," & _
+   "PRIMARY KEY(NumLicense)," & _
+   "FOREIGN KEY(IDStatut) REFERENCES Statut(IDStatut)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Rencontre(" & _
+   "IDRencontre COUNTER," & _
+   "LieuRencontre VARCHAR(50)," & _
+   "Domicile LOGICAL," & _
+   "DateRencontre DATE NOT NULL," & _
+   "HeureRencontre TIME," & _
+   "ScoreEquipe SMALLINT," & _
+   "ScoreAdverse SMALLINT," & _
+   "IdAdversaire INT NOT NULL," & _
+   "PRIMARY KEY(IDRencontre)," & _
+   "FOREIGN KEY(IdAdversaire) REFERENCES Adversaire(IdAdversaire)" & _
+");"   
+
+DoCmd.RunSQL "CREATE TABLE Participe(" & _
+   "NumLicense CHAR(8)," & _
+   "IDRencontre INT," & _
+   "Titulaire LOGICAL," & _
+   "Notation CHAR(1)," & _
+   "PRIMARY KEY(NumLicense, IDRencontre)," & _
+   "FOREIGN KEY(NumLicense) REFERENCES Joueur(NumLicense)," & _
+   "FOREIGN KEY(IDRencontre) REFERENCES Rencontre(IDRencontre)" & _
+");"   
+
+End Sub

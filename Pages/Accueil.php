@@ -1,6 +1,31 @@
 <?php
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
+
+    //Variables pour les données de connexion à la base de donnée
+    $server = 'localhost';
+    $db = 'coachbasket';
+    $login = 'root';
+    $mdp = '';
+
+    ///Connexion au serveur MySQL
+    try {
+        $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
+    }
+    catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    ///Préparation de la requête sans les variables (marqueurs : nominatifs)
+    $req = $linkpdo->prepare('  SELECT club.Nom, rencontre.ScoreEquipe, rencontre.ScoreAdverse, adversaire.Nom, max(rencontre.DateRencontre), rencontre.IdRencontre
+                                FROM club, rencontre, adversaire
+                                WHERE rencontre.IdAdversaire = adversaire.IdAdversaire;');
+
+    ///Exécution de la requête
+    $req->execute();
+
+    $data = $req->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +57,12 @@
 
     <div class="DivMatch">
         <div class="TitreMatch">
-            <h1>Dernier match ajouté</h1>
+            <h1>Dernière rencontre</h1>
         </div>
 
         <div class="DivEquipe">
             <div class="TitreEquipe">
-                <h1>Nous</h1>
+                <h1> <?php echo $data[0][0] ?> </h1>
             </div>
 
             <div class="DivImage">
@@ -45,7 +70,7 @@
             </div>
 
             <div>
-                <p>Score</p>
+                <p> <?php echo $data[0][1] ?> </p>
             </div>
         </div>
 
@@ -56,16 +81,16 @@
             </div>
 
             <div class="TitreEquipe">
-                <h1>Equipe adverse</h1>
+                <h1> <?php echo $data[0][3] ?> </h1>
             </div>
 
             <div>
-                <p>Score</p>
+                <p> <?php echo $data[0][2] ?> </p>
             </div>
         </div>
         
         <div>
-            <button type="button">Modifier</button>
+            <button type="button">Ajouter des notes sur ce match</button>
         </div>
     </div>
 
