@@ -1,6 +1,7 @@
 <?php
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
+    require '../FonctionPHP/connBDD.php';
     $date = date('Y-m-d');
 ?>
 

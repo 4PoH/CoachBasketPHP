@@ -1,6 +1,9 @@
 <?php
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
+
+    require '../FonctionPHP/connBDD.php';
+
 ?>
 
 <!DOCTYPE HTML>
@@ -20,19 +23,6 @@
     </div>
     
     <?php
-        //Variables pour les données de connexion à la base de donnée
-        $server = 'localhost';
-        $db = 'coachbasket';
-        $login = 'root';
-        $mdp = '';
-
-        ///Connexion au serveur MySQL
-        try {
-            $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-        }
-        catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
 
         //Récupération de tout les statuts disponibles
         ///Préparation de la requête

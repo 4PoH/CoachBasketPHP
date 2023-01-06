@@ -1,4 +1,7 @@
 <?php
+
+require '../FonctionPHP/connBDD.php';
+
 $erreur = null;
 if (!empty($_POST['nomutilisateur']) && !empty($_POST['motdepasse'])) {
     if ($_POST['nomutilisateur'] === 'John' && $_POST['motdepasse'] === 'Doe') {

@@ -2,19 +2,7 @@
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
 
-    //Variables pour les données de connexion à la base de donnée
-    $server = 'localhost';
-    $db = 'coachbasket';
-    $login = 'root';
-    $mdp = '';
-
-    ///Connexion au serveur MySQL
-    try {
-        $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-    }
-    catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    require '../FonctionPHP/connBDD.php';
 
     ///Préparation des requêtes
     $reqHistRenc = $linkpdo->prepare('SELECT rencontre.*, adversaire.Nom, adversaire.LienLogo
@@ -22,10 +10,19 @@
                                     WHERE rencontre.IdAdversaire = adversaire.IdAdversaire
                                     ORDER BY rencontre.DateRencontre DESC');
 
+    $reqClub = $linkpdo->prepare('SELECT club.Nom, club.Logo FROM club');
+
+    $reqNBMatch = $linkpdo->prepare('SELECT count(*) from rencontre');
+
     ///Exécution de la requête
     $reqHistRenc->execute();
-
     $HistRenc = $reqHistRenc->fetchAll();
+
+    $reqClub->execute();
+    $Club = $reqClub->fetchAll();
+
+    $reqNBMatch->execute();
+    $Nbmatch = $reqNBMatch->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -44,7 +41,24 @@
         </div>
 
         <div>
-        <?php ?>
+            <?php for ($match = 0; $match < $Nbmatch[8][0]; $match++) { ?>
+            <div>
+                <div>
+                    <div><?php echo($HistRenc[0][0]); ?></div>
+                    <div>Score</div>
+                    <div>Image</div>
+                </div>
+
+                <div>
+                    <div>Image</div>
+                    <div>Club</div>
+                    <div>Score</div>
+                </div>
+            </div>
+            <div>
+                <div>Lieu</div> <div>Date</div> <div>Heure</div>
+            </div>
+            <?php } ?>
         </div>
 
     </body>

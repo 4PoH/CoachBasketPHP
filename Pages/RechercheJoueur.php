@@ -9,19 +9,7 @@
     //echo $_POST['postePref'];
     echo $_POST['Statut'];
 
-    //Variables pour les données de connexion à la base de donnée
-    $server = 'localhost';
-    $db = 'coachbasket';
-    $login = 'root';
-    $mdp = '';
-
-    ///Connexion au serveur MySQL
-    try {
-        $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-    }
-    catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)
     $req = $linkpdo->prepare('  SELECT joueur.NumLicence, joueur.Prenom, joueur.Nom, joueur.DateNaissance, joueur.Taille, joueur.Poids, joueur.PostePref, statut.Libelle as Statut
