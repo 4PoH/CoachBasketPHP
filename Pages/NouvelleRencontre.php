@@ -1,13 +1,14 @@
 <?php
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
+    $date = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Accueil</title>
+        <title>Nouvelle Rencontre</title>
         <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
     <body>
@@ -17,8 +18,6 @@
     <div class="TitrePageRencontre">
         <h1>Nouvelle Rencontre</h1>
     </div>
-    
-    <?php $date = date('Y-m-d');?>
 
     <div>
         <form name="formu" action="ajoutRencontre.php" method="post">

@@ -1,6 +1,33 @@
 <?php
     require '../FonctionPHP/auth.php';
     forcer_utilisateur_connecte();
+
+    $date = date('Y-m-d');
+
+    //Variables pour les données de connexion à la base de donnée
+    $server = 'localhost';
+    $db = 'coachbasket';
+    $login = 'root';
+    $mdp = '';
+
+    ///Connexion au serveur MySQL
+    try {
+        $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
+    }
+    catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    ///Préparation des requêtes
+    $reqStatut = $linkpdo->prepare('SELECT statut.Libelle FROM statut;');
+    $reqNb = $linkpdo->prepare('SELECT count(statut.Libelle) as NB FROM statut;');
+
+    ///Exécution de la requête
+    $reqStatut->execute();
+    $reqNb->execute();
+
+    $listeStatut = $reqStatut->fetchAll();
+    $NbStatut = $reqNb->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -18,31 +45,6 @@
         <div class="TitrePageConsultation">
             <h1>Consultation</h1>
         </div>
-        
-        <?php
-            //Variables pour les données de connexion à la base de donnée
-            $server = 'localhost';
-            $db = 'coachbasket';
-            $login = 'root';
-            $mdp = '';
-
-            ///Connexion au serveur MySQL
-            try {
-                $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-            }
-            catch (Exception $e) {
-                die('Erreur : ' . $e->getMessage());
-            }
-
-            //Récupération de tout les statuts disponibles
-            ///Préparation de la requête
-            $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
-
-            ///Exécution de la requête
-            $req->execute(array());
-
-            $date = date('Y-m-d');
-        ?>
 
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
@@ -71,28 +73,18 @@
                     <p class="Libelle">Statut : </p>
                     <input list="Statut" name="Statut">
                         <datalist id="Statut">
-                            <option value="Chocolate">
-                            <option value="Coconut">
-                            <option value="Mint">
-                            <option value="Strawberry">
-                            <option value="Vanilla">
+                        <?php for ($Statut = 0; $Statut < $NbStatut[0][0]; $Statut++){ 
+                            echo '<option value=\''.$listeStatut[$Statut][0].'\'>';}?>
                         </datalist>
                 </div>
             </div>
 
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
-                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire" onclick="formu.action='../RequetePHP/RechercheJoueur.php'">
+                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire" onclick="formu.action='../Pages/RechercheJoueur.php'">
                 <input type="submit" name="" value="Modifier" class="BoutonFormulaire">
                 <input type="submit" name="" value="Supprimer" class="BoutonFormulaire">
             </div>
         </form>
-
-        <?php 
-        
-            
-
-        ?>
-
     </body>
 </html>

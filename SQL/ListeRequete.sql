@@ -73,7 +73,7 @@ from rencontre
 where scoreEquipe < scoreAdverse
 
 /* Afficher la liste des status*/
-SELECT *
+SELECT statut.libelleStatut
 from statut
 
 /* Supprimer un joueur à partir son numéro de licence*/
