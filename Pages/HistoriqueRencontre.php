@@ -39,8 +39,12 @@
         
         <?php require '../FonctionPHP/header.php'; ?>
 
-
         <div class="TitrePageConsultation">
             <h1>Historique Rencontre</h1>
         </div>
+
+        <div>
+        <?php ?>
+        </div>
+
     </body>
