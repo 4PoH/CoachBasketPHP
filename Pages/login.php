@@ -3,6 +3,19 @@
 require '../FonctionPHP/connBDD.php';
 
 $erreur = null;
+$username = 'null';
+
+///Préparation des requêtes
+$requser = $linkpdo->prepare('SELECT utilisateur.password
+                                FROM utilisateur
+                                WHERE utilisateur.username = :p_username');
+
+$requser->bindParam(':p_username', $_POST['nomutilisateur']);
+
+///Exécution de la requête
+$requser->execute();
+$user = $requser->fetchAll();
+
 if (!empty($_POST['nomutilisateur']) && !empty($_POST['motdepasse'])) {
     if ($_POST['nomutilisateur'] === 'John' && $_POST['motdepasse'] === 'Doe') {
         session_start();

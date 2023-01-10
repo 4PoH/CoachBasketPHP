@@ -23,14 +23,6 @@
     </div>
     
     <?php
-
-        //Récupération de tout les statuts disponibles
-        ///Préparation de la requête
-        $req = $linkpdo->prepare('Select statut.libellestatut FROM statut');
-
-        ///Exécution de la requête
-        $req->execute(array());
-
         $date = date('Y-m-d');
     ?>
 

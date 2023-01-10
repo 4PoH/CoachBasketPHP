@@ -41,24 +41,55 @@
         </div>
 
         <div>
-            <?php for ($match = 0; $match < $Nbmatch[8][0]; $match++) { ?>
+            <?php for ($match = 0; $match < $Nbmatch[0][0]; $match++) { 
+                if($HistRenc[$match][2] == 1) {
+                ?>
             <div>
                 <div>
-                    <div><?php echo($HistRenc[0][0]); ?></div>
-                    <div>Score</div>
-                    <div>Image</div>
+                    <div>Image <?php echo($Club[0][1]); ?></div>
+                    <div>Club <?php echo($Club[0][0]); ?></div>
+                    <div>Score <?php echo($HistRenc[$match][5]); ?></div>
                 </div>
 
                 <div>
-                    <div>Image</div>
-                    <div>Club</div>
-                    <div>Score</div>
+                    <div>Image <?php echo($HistRenc[$match][9]); ?></div>
+                    <div>Club <?php echo($HistRenc[$match][8]); ?></div>
+                    <div>Score <?php echo($HistRenc[$match][6]); ?></div>
                 </div>
             </div>
             <div>
-                <div>Lieu</div> <div>Date</div> <div>Heure</div>
+                <div>Lieu <?php echo($HistRenc[$match][1]); ?></div> <div>Date <?php echo($HistRenc[$match][3]); ?></div> <div>Heure <?php echo($HistRenc[$match][4]); ?></div>
             </div>
-            <?php } ?>
+            
+            <div>
+            <button type="button">Ajouter des notes sur ce match</button>
+            </div>
+
+            <?php } else { ?>
+
+            <div>
+                <div>
+                    <div>Image <?php echo($HistRenc[$match][9]); ?></div>
+                    <div>Club <?php echo($HistRenc[$match][8]); ?></div>
+                    <div>Score <?php echo($HistRenc[$match][6]); ?></div>
+                </div>
+
+                <div>
+                    <div>Image <?php echo($Club[0][1]); ?></div>
+                    <div>Club <?php echo($Club[0][0]); ?></div>
+                    <div>Score <?php echo($HistRenc[$match][5]); ?></div>
+                </div>
+            </div>
+
+            <div>
+                <div>Lieu <?php echo($HistRenc[$match][1]); ?></div> <div>Date <?php echo($HistRenc[$match][3]); ?></div> <div>Heure <?php echo($HistRenc[$match][4]); ?></div>
+            </div>
+
+            <div>
+                <button type="button">Ajouter des notes sur ce match</button>
+            </div>
+
+            <?php }} ?>
         </div>
 
     </body>
