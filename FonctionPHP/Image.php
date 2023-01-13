@@ -1,8 +1,6 @@
 <?php
 
-    require '../FonctionPHP/connBDD.php';
-
-    var_dump($_FILES);
+    $reussite = 0;
 
     if(!empty($_FILES)) {
         $file_name = $_FILES['fichier']['name'];
@@ -13,10 +11,10 @@
 
         $extension_autorisees = array('.png', '.PNG','.jpg', '.JPG');
 
-        if(in_array($file_extension, $extension_autorisees)){
+        if((in_array($file_extension, $extension_autorisees)) and (strlen($file_temp_name) < 150) ){
             if(move_uploaded_file($file_temp_name,$file_dest)){
-                $requete = $db->prepare('INSERT INTO :p_table.:p_column ');
                 echo 'Fichier envoyé avec succès';
+                $reussite = 1;
             } else {
                 echo "Une erreur est survenue lors de l'envoi du fichier";
             }
@@ -25,14 +23,6 @@
         }
     }
 ?>
-<html>
-    <body>
-        <div class="MenuBarre">
-            <form method="post" action="Image.php" enctype="multipart/form-data">
-                <p>Déposer une image</p>
-                <input type="file" accept="image/png, image/jpg" name="fichier">
-                <button type="submit">Déposer</button>
-            </form>
-        </div>
-    </body>
-</html>
+
+<p>Déposer une image (.png / .jpg): </p>
+<input type="file" accept="image/png, image/jpg" name="fichier">

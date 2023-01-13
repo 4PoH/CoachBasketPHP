@@ -5,7 +5,7 @@
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $dateN = $_POST['dateN'];
-    $photo = $_POST['photo'];
+    $photo = $_POST['fichier'];
     $taille = $_POST['taille'];
     $poids = $_POST['poids'];
     $postePref = $_POST['postePref'];
@@ -26,11 +26,11 @@
     echo $commentaire."\n";
     echo $statut."\n";
 
-    ///Préparation de la requête
+    // ///Préparation de la requête
     $req = $linkpdo->prepare('INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Photo, Taille, Poids, PostePref, Commentaire, idStatus)
                     VALUES(:numLicence, :prenom, :nom, :dateN, :photo, :taille, :poids, :postePref, :commentaire, :statut)');
     
-    ///Exécution de la requête
+    // ///Exécution de la requête
     $req->execute(array('numLicence' => $numLicence,
                         'prenom' => $prenom,
                         'nom' => $nom,

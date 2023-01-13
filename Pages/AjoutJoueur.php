@@ -37,12 +37,9 @@
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Prenom : </p> <input class="CaseEntree" type="text" name="prenom">
-                </div>
+                </di v>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Date de naissance : </p> <input class="CaseEntree" type="date" name="dateN"> 
-                </div>
-                <div class="LigneFormulaire">
-                    <p class="Libelle">Photo : </p> <input class="CaseEntree" type="file" accept="image/png, image/jpg" name="photo"> 
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Taille : </p> <input class="CaseEntree" type="int" name="taille"> 
@@ -67,11 +64,15 @@
                             <option value="Vanilla">
                         </datalist>
                 </div>
+
+                <?php require '../FonctionPHP/Image.php'; ?>
+                
+
             </div>
 
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
-                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='InsertionJoueur.php'">
+                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" <?php $redirection = 'InsertionJoueur.php'; if($reussite = 1) {echo "onclick='formu.action=$redirection'";} ?>>
                 <input type="submit" name="" value="Rechercher" class="BoutonFormulaire">
                 <input type="submit" name="" value="Modifier" class="BoutonFormulaire">
                 <input type="submit" name="" value="Supprimer" class="BoutonFormulaire">
