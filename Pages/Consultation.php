@@ -37,7 +37,7 @@
         <form name="formu" action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Numéro de numéro de licence : </p> <input class="CaseEntree" type="text" name="numLicence">
+                    <p class="Libelle">Numéro de licence : </p> <input class="CaseEntree" type="text" name="numLicence">
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Nom : </p> <input class="CaseEntree" type="text" name="nom">
@@ -59,11 +59,13 @@
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Statut : </p>
-                    <input list="Statut" name="Statut">
-                        <datalist id="Statut">
-                        <?php for ($Statut = 0; $Statut < $NbStatut[0][0]; $Statut++){ 
-                            echo '<option value=\''.$listeStatut[$Statut][0].'\'>';}?>
-                        </datalist>
+                    <select name="statut">
+                        <option value="">-- Choisir un statut --</option>
+                        <?php $colonne = 0; for ($Statut = 0; $Statut < $NbStatut[0][0]; $Statut++){
+                            $valeur = $listeStatut[$Statut][$colonne];
+                            echo "<option> $valeur </option>";
+                            }?>
+                    </select>
                 </div>
             </div>
 

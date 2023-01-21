@@ -5,7 +5,7 @@
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $dateN = $_POST['dateN'];
-    $photo = $_POST['fichier'];
+    $photo = $_POST['photo'];
     $taille = $_POST['taille'];
     $poids = $_POST['poids'];
     $postePref = $_POST['postePref'];

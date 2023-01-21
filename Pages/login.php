@@ -48,13 +48,10 @@ if (est_connecte()){
 </head>
 
 <body>
-
-    <?php require '../FonctionPHP/header.php'; ?>
-
     <?php if ($erreur):?>
-    <div>
-        <?= $erreur ?>
-    </div>
+        <div>
+            <?= $erreur ?>
+        </div>
     <?php endif?>
 
     <div class="Corps">

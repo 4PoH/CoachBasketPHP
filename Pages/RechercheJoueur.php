@@ -7,7 +7,7 @@
     //echo $_POST['taille'];
     //echo $_POST['poids'];
     //echo $_POST['postePref'];
-    echo $_POST['Statut'];
+    echo $_POST['statut'];
 
     require '../FonctionPHP/connBDD.php';
 

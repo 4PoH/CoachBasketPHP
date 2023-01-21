@@ -5,21 +5,25 @@
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation des requêtes
-    $reqHistRenc = $linkpdo->prepare('SELECT rencontre.*, adversaire.Nom, adversaire.LienLogo
-                                    FROM rencontre, adversaire
-                                    WHERE rencontre.IdAdversaire = adversaire.IdAdversaire
-                                    ORDER BY rencontre.DateRencontre DESC');
+    $reqRencontre = $linkpdo->prepare('  SELECT  club.Nom,
+                                        club.Logo,
+                                        rencontre.ScoreEquipe,
+                                        rencontre.ScoreAdverse,
+                                        adversaire.Nom,
+                                        adversaire.logo,
+                                        rencontre.domicile,
+                                        rencontre.DateRencontre,
+                                        rencontre.IdRencontre
 
-    $reqClub = $linkpdo->prepare('SELECT club.Nom, club.Logo FROM club');
+                                FROM club, rencontre, adversaire
+                                WHERE rencontre.IdAdversaire = adversaire.IdAdversaire
+                                ORDER BY rencontre.DateRencontre;');
 
     $reqNBMatch = $linkpdo->prepare('SELECT count(*) from rencontre');
 
     ///Exécution de la requête
-    $reqHistRenc->execute();
-    $HistRenc = $reqHistRenc->fetchAll();
-
-    $reqClub->execute();
-    $Club = $reqClub->fetchAll();
+    $reqRencontre->execute();
+    $resultatRencontre = $reqRencontre->fetchAll();
 
     $reqNBMatch->execute();
     $Nbmatch = $reqNBMatch->fetchAll();
@@ -41,55 +45,107 @@
         </div>
 
         <div>
-            <?php for ($match = 0; $match < $Nbmatch[0][0]; $match++) { 
-                if($HistRenc[$match][2] == 1) {
-                ?>
-            <div>
-                <div>
-                    <div>Image <?php echo($Club[0][1]); ?></div>
-                    <div>Club <?php echo($Club[0][0]); ?></div>
-                    <div>Score <?php echo($HistRenc[$match][5]); ?></div>
-                </div>
-
-                <div>
-                    <div>Image <?php echo($HistRenc[$match][9]); ?></div>
-                    <div>Club <?php echo($HistRenc[$match][8]); ?></div>
-                    <div>Score <?php echo($HistRenc[$match][6]); ?></div>
-                </div>
-            </div>
-            <div>
-                <div>Lieu <?php echo($HistRenc[$match][1]); ?></div> <div>Date <?php echo($HistRenc[$match][3]); ?></div> <div>Heure <?php echo($HistRenc[$match][4]); ?></div>
-            </div>
+            <?php $nbLignes = 0; while($nbLignes < $Nbmatch[0][0]) { ?>
             
-            <div>
-            <button type="button">Ajouter des notes sur ce match</button>
-            </div>
+                <?php if ( $resultatRencontre[$nbLignes][6] === '0') { ?>
+                    
+                    <?php if($resultatRencontre[$nbLignes][2] > $resultatRencontre[$nbLignes][3]) {
+                        $resultat = "victoire";
+                        } elseif ($resultatRencontre[$nbLignes][2] === $resultatRencontre[$nbLignes][3]) {
+                            $resultat = "egalite";
+                            } else {
+                                $resultat = "defaite";
+                                }
+                    ?>
 
-            <?php } else { ?>
+                    <div class="DivMatch <?php echo $resultat; ?>">             
+                        <div class="DivEquipe">
+                            <div class="DivClubEtImage">
+                                <div class="TitreEquipe">
+                                    <h1> <?php echo $resultatRencontre[$nbLignes][0]; ?> </h1>
+                                </div>
 
-            <div>
-                <div>
-                    <div>Image <?php echo($HistRenc[$match][9]); ?></div>
-                    <div>Club <?php echo($HistRenc[$match][8]); ?></div>
-                    <div>Score <?php echo($HistRenc[$match][6]); ?></div>
-                </div>
+                                <div class="DivImage">
+                                    <img src="<?php echo $resultatRencontre[$nbLignes][1]; ?>" alt="Logo de notre club" class="LogoEquipe">
+                                </div>
+                            </div>
 
-                <div>
-                    <div>Image <?php echo($Club[0][1]); ?></div>
-                    <div>Club <?php echo($Club[0][0]); ?></div>
-                    <div>Score <?php echo($HistRenc[$match][5]); ?></div>
-                </div>
-            </div>
+                            <div class="DivScore">
+                                <p> <?php echo $resultatRencontre[$nbLignes][2]; ?> </p>
+                            </div>
+                        </div>
 
-            <div>
-                <div>Lieu <?php echo($HistRenc[$match][1]); ?></div> <div>Date <?php echo($HistRenc[$match][3]); ?></div> <div>Heure <?php echo($HistRenc[$match][4]); ?></div>
-            </div>
+                        <div class="DivEquipe">
+                            <div class="DivClubEtImage">
+                                <div class="DivImage">
+                                    <img src="<?php echo $resultatRencontre[$nbLignes][5]; ?> " alt="Logo de L'équipe adverse" class="LogoEquipe">
+                                </div>
 
-            <div>
-                <button type="button">Ajouter des notes sur ce match</button>
-            </div>
+                                <div class="TitreEquipe">
+                                    <h1> <?php echo $resultatRencontre[$nbLignes][4]; ?> </h1>
+                                </div>
+                            </div>
 
-            <?php }} ?>
+                            <div class="DivScore">
+                                <p> <?php echo $resultatRencontre[$nbLignes][3]; ?> </p>
+                            </div>
+                        </div>
+                    
+                        <div class="ButtonNote">
+                            <button type="button">Ajouter des notes sur ce match</button>
+                        </div>
+                    </div>
+
+                <?php } else { ?>
+                    
+                <?php if($resultatRencontre[$nbLignes][2] > $resultatRencontre[$nbLignes][3]) {
+                    $resultat = "victoire";
+                    } elseif ($resultatRencontre[$nbLignes][2] === $resultatRencontre[$nbLignes][3]) {
+                        $resultat = "egalite";
+                        } else {
+                            $resultat = "defaite";
+                            }
+                    ?>
+
+                    <div class="DivMatch <?php echo $resultat; ?>">             
+                        <div class="DivEquipe">
+                            <div class="DivClubEtImage">
+                                <div class="TitreEquipe">
+                                    <h1> <?php echo $resultatRencontre[$nbLignes][4]; ?> </h1>
+                                </div>
+
+                                <div class="DivImage">
+                                    <img src="<?php echo $resultatRencontre[$nbLignes][5]; ?> " alt="Logo de L'équipe adverse" class="LogoEquipe">
+                                </div>
+                            </div>
+
+                            <div class="DivScore">
+                                <p> <?php echo $resultatRencontre[$nbLignes][3]; ?> </p>
+                            </div>
+                        </div>
+
+                        <div class="DivEquipe">
+                            <div class="DivClubEtImage">
+                                <div class="DivImage">
+                                    <img src="<?php echo $resultatRencontre[$nbLignes][1]; ?>" alt="Logo de notre club" class="LogoEquipe">
+                                </div>
+                                
+                                <div class="TitreEquipe">
+                                    <h1> <?php echo $resultatRencontre[$nbLignes][0]; ?> </h1>
+                                </div>    
+                            </div>
+
+                            <div class="DivScore">
+                                <p> <?php echo $resultatRencontre[$nbLignes][2]; ?> </p>
+                            </div>
+                        </div>
+                    
+                        <div class="ButtonNote">
+                            <button type="button">Ajouter des notes sur ce match</button>
+                        </div>
+                    </div>
+                <?php } ?>
+        <?php $nbLignes += 1;} ?>
         </div>
 
     </body>

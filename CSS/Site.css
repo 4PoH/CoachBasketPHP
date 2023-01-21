@@ -1,97 +1,202 @@
 body {
     width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: bisque;
-    
-    display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    margin: auto;
 }
 
 /* Header */
-.header {
+:root{
+    --hauteur-menu: 60px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat, sans-serif;
+}
+
+nav {
     width: 100%;
-    max-height: 200px;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
 }
 
-.Menu {
-    border : solid red;
-    padding: 0;
-
+nav > ul {
     display: flex;
-    justify-content: space-evenly;
-}
+    text-align: center;
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.3);
+    height: var(--hauteur-menu);
+  }
 
-.Menu li {
+  nav ul {
     list-style-type: none;
-    margin: 30px;
-}
+  }
+  
+  nav > ul > li {
+    background-color: white;
+    position: relative;
+    height: 100%;
+    flex: 1;
+  }
 
-.Menu a {
-    border: solid blue;
-    padding: 10px;
-    border-radius: 5px;
-}
+  nav > ul > li > a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  li a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .menu-deroulant > a:after{
+    content: '❯';
+    font-size: 15px;
+    margin-left: 7px;
+    display: inline-block;
+  }
+
+  .sous-menu {
+    margin-top: var(--hauteur-menu);
+    width: 100%;
+    text-align: left;
+    background-color: white;
+    border-radius: 2px;
+    overflow: hidden;
+    max-height: 0;
+  }
+  
+  .sous-menu > li > a {
+    height: 50px;
+    padding-left: 20px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  nav > ul > li:hover > a{
+    color: #2169EC;
+  }
+  
+  .sous-menu > li:hover {
+    background-color: rgba(33, 105, 236, 0.3);
+  }
+  
+  .sous-menu > li:hover > a {
+    color: white;
+  }
+
+  @keyframes rotationFleche {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(90deg);
+    }
+  }
+
+  .menu-deroulant:hover > a:after{
+    animation: rotationFleche 0.2s linear forwards;
+  }
+
+  @keyframes apparitionSousMenu {
+    0% {
+      box-shadow: 0px 3px 3px 1px rgba(0,0,0,0);
+      border-top: 3px solid #2169EC;
+    }
+    30% {
+      box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.3);
+    }
+    100% {
+      max-height: 50em;
+      border-top: 3px solid #2169EC;
+      box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.3);
+    }
+  }
+
+  .menu-deroulant:hover > .sous-menu {
+    animation: apparitionSousMenu 1s forwards;
+  }
 
 /* Page Acceuil */
-.Barre {
-    background-color: red;
-    display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
+
+.Titre {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.BoutonMenu{
-    width: 24rem;
-    height: 10rem;
-    margin: 1rem;
-}
-
-.DivMatch{
-    background-color: blue;
-    display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.TitreMatch {
-    width: 100%;
+.DivMatch {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .DivEquipe {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 50%;
+}
+
+.DivClubEtImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  padding: 5px;
 }
 
 .LogoEquipe {
     width: 5rem;
-    padding: 3px;
-    border: solid 1px black;
-}
+    padding: 5px;
+    border: solid 1px black
+  }
 
-.TitreEquipe {
-    width: 80%;
-}
+  .ButtonNote {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 
-.DivImage {
-    width: 20%;
-}
+  .victoire {
+    background: greenyellow;
+  }
 
-/* Page Consultation */
+  .defaite {
+    background: red;
+  }
+
+  .egalite {
+    background: orange;
+  }
+
+/* Page consultation des joueurs*/
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .ficheJoueur {
+    width: 33%;
+    display: flex;
+    background: #2169EC;
+    padding: 5px;
+  }
+
+/* Page Consultation
 
 .TitrePageConsultation {
     width: 100%;
 }
 
-/* Formulaire Général */
+
+
+/* Formulaire Général 
 
 .Formulaire {
     width: 70%;
@@ -131,7 +236,7 @@ body {
     width: 15%;
 }
 
-/* Page de selection */
+/* Page de selection 
 
 .Cadre {
     border: solid blue;
@@ -170,7 +275,7 @@ body {
     justify-content: center;
 }
 
-/* Page recherchejoueur */
+/* Page recherchejoueur 
 .RetourJoueur {
     padding: 0;
     display: flex;
@@ -187,3 +292,4 @@ body {
     align-items: center;
     margin: 10px;
 }
+*/
