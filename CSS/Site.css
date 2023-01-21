@@ -177,15 +177,17 @@ nav > ul {
   .container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
   }
 
   .ficheJoueur {
-    width: 33%;
+    width: 30%;
     display: flex;
+    flex-direction: column;
     background: #2169EC;
-    padding: 5px;
+    margin: 5px;
   }
 
 /* Page Consultation
