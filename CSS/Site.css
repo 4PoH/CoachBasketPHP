@@ -186,8 +186,9 @@ nav > ul {
     width: 30%;
     display: flex;
     flex-direction: column;
-    background: #2169EC;
+    background: #95b7f7;
     margin: 5px;
+    padding: 10px;
   }
 
 /* Page Consultation
@@ -195,8 +196,6 @@ nav > ul {
 .TitrePageConsultation {
     width: 100%;
 }
-
-
 
 /* Formulaire Général 
 

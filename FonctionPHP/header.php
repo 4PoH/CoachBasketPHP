@@ -7,7 +7,7 @@
             <li class="menu-deroulant">
                 <a href="../Pages/Consultation.php">Joueur</a>
                 <ul class="sous-menu">
-                    <li><a href="../Pages/Consultation.php">Consultation</a></li>
+                    <li><a href="../Pages/Licencies.php">Consultation</a></li>
                     <li><a href="../Pages/AjoutJoueur.php">Ajout</a></li>
                     <li><a href="#">Modification</a></li>
                     <li><a href="#">Suppression</a></li>
