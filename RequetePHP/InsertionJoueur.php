@@ -40,7 +40,6 @@
     $Statut = $requeteStatut->fetchAll();
 
     $statut = $Statut[0][0];
-    echo("Ici".$statut);
 
     // ///Préparation de la requête
     $requeteInsertion = $linkpdo->prepare('INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Taille, Poids, PostePref, Commentaire, idStatut)
@@ -58,6 +57,14 @@
     $requeteInsertion->bindParam(':p_statut', $statut);
 
     ///Execution de la requete pour obtenir l'idStatut
-    $requeteInsertion->execute();
+    
+    if($requeteInsertion->execute()){
+        echo "L'insertion a bien été prise en compte";
+        header('Location: ../Pages/Licencies.php');
+    }else{
+        $requeteInsertion->DebugDumpParams();
+        echo "L'insertion a échouée";
+        echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
+    }
             
 ?> 

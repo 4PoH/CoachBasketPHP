@@ -8,36 +8,38 @@
                                             AND joueur.NumLicence = :p_numLicence
                                 ');
 
-    $requeteUpdateJoueurs = $linkpdo->prepare('   UPDATE joueur
-                                            SET Nom = :p_nom ,
-                                                Prenom = :p_prenom,
-                                                DateNaissance = : p_dateN, 
-                                                Photo = :p_photo, 
-                                                Taille = :p_taille, 
-                                                Poids = :p_poids, 
-                                                PostePref = :p_postePref, 
-                                                Commentaire = :p_commentaire, 
-                                                idStatus = :p_statut
-                                            WHERE joueur.Numlicence = :p_numLicence
-                                            ');
+    $requeteUpdateJoueurs = $linkpdo->prepare(' UPDATE joueur
+                                                set Nom = :p_nom ,
+                                                    Prenom = :p_prenom,
+                                                    DateNaissance = :p_dateN,
+                                                    /*Photo = :p_photo,*/
+                                                    Taille = :p_taille,
+                                                    Poids = :p_poids,
+                                                    PostePref = :p_postePref,
+                                                    Commentaire = :p_commentaire,
+                                                    idStatut = :p_statut
+                                                where joueur.Numlicence = :p_numLicence');
 
     $requeteStatut = $linkpdo->prepare('SELECT statut.Libelle FROM statut');
     
     $requeteNombreStatut = $linkpdo->prepare('SELECT count(statut.Libelle) as NB FROM statut');
 
+    $requeteStatutJoueur = $linkpdo->prepare('SELECT idStatut
+                                        FROM statut
+                                        WHERE statut.Libelle = :p_Libelle');
+
     ///Liens entre variables PHP et marqueurs
     $requeteJoueurs->bindParam(':p_numLicence', $_POST['Licence']);
 
     $requeteUpdateJoueurs->bindParam(':p_numLicence', $_POST['Licence']);
-    $requeteUpdateJoueurs->bindParam(':p_p_nom', $_POST['nom']);
+    $requeteUpdateJoueurs->bindParam(':p_nom', $_POST['nom']);
     $requeteUpdateJoueurs->bindParam(':p_prenom', $_POST['prenom']);
-    $requeteUpdateJoueurs->bindParam(':p_dateN', $_POST['date']);
+    $requeteUpdateJoueurs->bindParam(':p_dateN', $_POST['dateN']);
     ///$requeteUpdateJoueurs->bindParam(':p_photo', $_POST['photo']);
     $requeteUpdateJoueurs->bindParam(':p_taille', $_POST['taille']);
     $requeteUpdateJoueurs->bindParam(':p_poids', $_POST['poids']);
     $requeteUpdateJoueurs->bindParam(':p_postePref', $_POST['postePref']);
     $requeteUpdateJoueurs->bindParam(':p_commentaire', $_POST['commentaire']);
-    $requeteUpdateJoueurs->bindParam(':p_statut', $_POST['statut']);
 
     ///Exécution de la requête
     $requeteStatut->execute();
@@ -47,13 +49,15 @@
     ///Résultat de la requete
     $listeStatut = $requeteStatut->fetchAll();
     $Joueurs = $requeteJoueurs->fetchAll();
-    $NbStatut = $requeteNombreStatut->fetchAll();
+    $NbStatut = $requeteNombreStatut->fetchAll();    
+
 ?>
 
 <body>
     <?php
         require '../FonctionPHP/connBDD.php';
-        require '../FonctionPHP/header.php'
+        require '../FonctionPHP/header.php';
+
     ?>
 
     <div class="Titre">
@@ -83,31 +87,61 @@
                     <p class="Libelle">Poids : </p> <input class="CaseEntree" type="int" name="poids" value="<?php echo $Joueurs[0][6];?>">
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Poste prefere : </p> <input class="CaseEntree" type="text" name="postePref" value="<?php echo $Joueurs[0][7];?>">
+                    <p class="Libelle">Poste préféré : </p> <input class="CaseEntree" type="text" name="postePref" value="<?php echo $Joueurs[0][7];?>">
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Commentaire : </p> <input class="CaseEntree" type="text" name="commentaire" value="<?php echo $Joueurs[0][8];?>">
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Statut : </p>
-                    <select name="statut">
-                        <option value=""> -- Choisir un statut -- </option>
-                        <?php $colonne = 0; for ($Statut = 0; $Statut < $NbStatut[0][0]; $Statut++){
-                            $valeur = $listeStatut[$Statut][$colonne];
-                            echo "<option> $valeur </option>";
-                            } ?>
+                    <select name="statut" id="statut">
+                        <?php
+                            foreach($listeStatut as $statut) {
+                                if($statut["Libelle"] == $Joueurs[0]["Statut"]) {
+                                    echo "<option value='" . $statut["Libelle"] . "' selected>" . $statut["Libelle"] . "</option>";
+                                } else {
+                                    echo "<option value='" . $statut["Libelle"] . "'>" . $statut["Libelle"] . "</option>";
+                                }
+                            }
+                        ?>
                     </select>
                 </div>
 
                 <?php require '../FonctionPHP/Image.php'; ?>
-                
 
             </div>
-
+            
             <div class="DivBoutonFormulaire">
                 <input type="submit" name="Modifier" value="Modifier" class="BoutonFormulaire" onclick="formulaire.action='../Pages/ModificationJoueurs.php'; return true;">
-                <input type="submit" name="Supprimer" value="Supprimer" class="BoutonFormulaire" onclick="formulaire.action='../Pages/SuppressionJoueurs.php'; return true;">
+                <input type="submit" name="Annuler" value="Annuler" class="BoutonFormulaire" onclick="formulaire.action='../Pages/Licencies.php'; return true;">
             </div>
+            
+            <?php
+            //Quand on clique sur le bouton modifier
+            if(isset($_POST['Modifier'])) {
+                $requeteStatutJoueur->bindParam(':p_Libelle', $_POST['statut']);
+                $requeteStatutJoueur->execute();
+                $StatutJoueur = $requeteStatutJoueur->fetchAll();
+
+
+                $requeteUpdateJoueurs->bindParam(':p_statut', $StatutJoueur[0][0]);
+                if($requeteUpdateJoueurs->execute()){
+                    echo "La modification a bien été prise en compte";
+                }else{
+                    $requeteUpdateJoueurs->DebugDumpParams();
+                    echo "La modification a échouée";
+                }
+                
+                echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
+                //header('Location: ../Pages/Licencies.php');
+            }
+
+            //Quand on clique sur le bouton annuler
+            if(isset($_POST['Annuler'])) {
+                header('Location: ../Pages/Licencies.php');
+            }
+            ?>
+
         </form>
     </div>
 </body>

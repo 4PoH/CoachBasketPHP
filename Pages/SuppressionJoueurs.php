@@ -3,7 +3,7 @@
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)
-    $requeteJoueurs = $linkpdo->prepare('   SELECT joueur.*, statut.Libelle as Statut
+    $requeteJoueurs = $linkpdo->prepare('   SELECT joueur.*, statut.Libelle AS Statut
                                             FROM joueur, statut
                                             WHERE joueur.idStatut = statut.idStatut
                                             AND joueur.NumLicence = :p_numLicence
@@ -11,10 +11,14 @@
 
     $requeteStatut = $linkpdo->prepare('SELECT statut.Libelle FROM statut');
     
-    $requeteNombreStatut = $linkpdo->prepare('SELECT count(statut.Libelle) as NB FROM statut');
+    $requeteNombreStatut = $linkpdo->prepare('SELECT count(statut.Libelle) AS NB FROM statut');
+    
+    $requeteSuppression = $linkpdo->prepare('DELETE FROM joueur WHERE joueur.NumLicence = :p_numLicence');
+
 
     ///Liens entre variables PHP et marqueurs
-    $requeteJoueurs->bindParam(':p_numLicence', $_POST['Licence']);
+    $Licence = $_POST['Licence'];
+    $requeteJoueurs->bindParam(':p_numLicence', $Licence);
 
     ///Exécution de la requête
     $requeteStatut->execute();
@@ -25,6 +29,28 @@
     $listeStatut = $requeteStatut->fetchAll();
     $Joueurs = $requeteJoueurs->fetchAll();
     $NbStatut = $requeteNombreStatut->fetchAll();
+
+    if(isset($_POST['Supprimer'])) {
+        $requeteSuppression->bindParam(':p_numLicence', $Licence);
+        
+        if($requeteSuppression->execute()){
+            echo "La suppression a bien été prise en compte";
+        }else{
+            $requeteSuppression->DebugDumpParams();
+            echo "La suppression a échouée";
+        }
+        //echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
+        //header('Location: ../Pages/Licencies.php');
+    }
+
+    //Quand on clique sur le bouton annuler
+    if(isset($_POST['Annuler'])) {
+        header('Location: ../Pages/Licencies.php');
+    }
+
+    echo $_POST['Licence'];
+    echo  $Licence;
+
 ?>
 
 <body>
@@ -38,7 +64,7 @@
     </div>
 
     <div class="container">
-        <form name=formulaire action="a" method="post">
+        <form name=formulaire action="../Pages/SuppressionJoueurs.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
                     <p class="Libelle">Numéro de numéro de licence : <?php echo $Joueurs[0][0];?></p>
@@ -48,7 +74,7 @@
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Prenom : <?php echo $Joueurs[0][1];?></p> 
-                </di v>
+                </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Date de naissance : <?php echo $Joueurs[0][3];?></p> 
                 </div>
@@ -59,7 +85,7 @@
                     <p class="Libelle">Poids : <?php echo $Joueurs[0][6];?></p> 
                 </div>
                 <div class="LigneFormulaire">
-                    <p class="Libelle">Poste prefere : <?php echo $Joueurs[0][7];?></p> 
+                    <p class="Libelle">Poste préféré : <?php echo $Joueurs[0][7];?></p> 
                 </div>
                 <div class="LigneFormulaire">
                     <p class="Libelle">Commentaire : <?php echo $Joueurs[0][8];?></p> 
@@ -74,8 +100,8 @@
             </div>
 
             <div class="DivBoutonFormulaire">
-                <input type="submit" name="Modifier" value="Modifier" class="BoutonFormulaire" onclick="formulaire.action='../Pages/ModificationJoueurs.php'; return true;">
                 <input type="submit" name="Supprimer" value="Supprimer" class="BoutonFormulaire" onclick="formulaire.action='../Pages/SuppressionJoueurs.php'; return true;">
+                <input type="submit" name="Annuler" value="Annuler" class="BoutonFormulaire" onclick="formulaire.action='../Pages/Licencies.php'; return true;">
             </div>
         </form>
     </div>
