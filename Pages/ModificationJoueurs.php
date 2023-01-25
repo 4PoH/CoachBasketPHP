@@ -2,10 +2,17 @@
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)
-    $requeteJoueurs = $linkpdo->prepare('   SELECT joueur.*, statut.Libelle as Statut
-                                            FROM joueur, statut
-                                            WHERE joueur.idStatut = statut.idStatut
-                                            AND joueur.NumLicence = :p_numLicence
+    $requeteJoueurs = $linkpdo->prepare('   UPDATE joueur
+                                            set Nom = :p_nom ,
+                                                Prenom = :p_prenom,
+                                                DateNaissance = : p_dateN, 
+                                                Photo = :p_photo, 
+                                                Taille = :p_taille, 
+                                                Poids = :p_poids, 
+                                                PostePref = :p_postePref, 
+                                                Commentaire = :p_commentaire, 
+                                                idStatus = :p_statut
+                                            where joueur.Numlicence = :p_numLicence
                                 ');
 
     $requeteStatut = $linkpdo->prepare('SELECT statut.Libelle FROM statut');
@@ -14,6 +21,16 @@
 
     ///Liens entre variables PHP et marqueurs
     $requeteJoueurs->bindParam(':p_numLicence', $_POST['Licence']);
+    $requeteJoueurs->bindParam(':p_p_nom', $_POST['nom']);
+    $requeteJoueurs->bindParam(':p_prenom', $_POST['prenom']);
+    $requeteJoueurs->bindParam(':p_dateN', $_POST['date']);
+    ///$requeteJoueurs->bindParam(':p_photo', $_POST['photo']);
+    $requeteJoueurs->bindParam(':p_taille', $_POST['taille']);
+    $requeteJoueurs->bindParam(':p_poids', $_POST['poids']);
+    $requeteJoueurs->bindParam(':p_postePref', $_POST['postePref']);
+    $requeteJoueurs->bindParam(':p_commentaire', $_POST['commentaire']);
+    $requeteJoueurs->bindParam(':p_statut', $_POST['statut']);
+
 
     ///Exécution de la requête
     $requeteStatut->execute();
