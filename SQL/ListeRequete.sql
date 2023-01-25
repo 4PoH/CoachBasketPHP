@@ -113,7 +113,7 @@ where numLicence = numLicence_saisi
 /* metter a jour le statut d'un joueur donné*/
 UPDATE joueur
 SET id_statut = statut_saisi
-where numLicence = numLicence_saisi
+where numLicence = numLicence
 
 
 /*selectionner les joueurs qui ont participer à des match trié par la titularisation*/
@@ -161,5 +161,9 @@ ORDER by participer.Titulaire DESC
 
 --mise jour information d'un joueur donnné à partir de son id--
 UPDATE joueur
-set 
-where joueur.licence = :numLicence
+set Nom = :p_nom , Prenom = :p_prenom, DateNaissance = : p_dateN, Photo = :p_photo, Taille = :p_taille, Poids = :p_poids, PostePref = :p_postePref, Commentaire = :p_commentaire, idStatus = :p_statut
+where joueur.Numlicence = :p_numLicence;
+
+--suppression joueur a partir de son numLicens--
+Delete from joueur
+where numLicense = :p_numLicence;
