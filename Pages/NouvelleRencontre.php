@@ -48,7 +48,7 @@
 
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
-                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='InsertionJoueur.php'">
+                <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='InsertionJoueur.php' return true;">
             </div>
         </form>
     </div>

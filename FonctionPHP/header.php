@@ -5,7 +5,7 @@
         <ul class="Menu">
             <li><a href="../Pages/Accueil.php">Coach Basket Assistant</a></li>
             <li class="menu-deroulant">
-                <a href="../Pages/Consultation.php">Joueur</a>
+                <a href="../Pages/Licencies.php">Joueur</a>
                 <ul class="sous-menu">
                     <li><a href="../Pages/Licencies.php">Consultation</a></li>
                     <li><a href="../Pages/AjoutJoueur.php">Ajout</a></li>
