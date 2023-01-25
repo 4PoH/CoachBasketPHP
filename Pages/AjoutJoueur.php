@@ -21,7 +21,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Consultation</title>
+        <title>Ajouter un(e) joueur(se)</title>
         <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
     </head>
  <body>
@@ -29,8 +29,8 @@
     <?php require '../FonctionPHP/header.php'; ?>
 
 
-    <div class="TitrePageConsultation">
-        <h1>Nouveau joueur</h1>
+    <div class="Titre">
+        <h1>Nouveau(lle) joueur(se)</h1>
     </div>
     
     <?php

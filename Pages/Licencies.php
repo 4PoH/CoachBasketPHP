@@ -45,7 +45,7 @@
                     <p><?php echo $lines['Statut'];?></p>
                 </div>
                 <div>
-                    <form name=formulaire action="../Pages/ModificationJoueurs.php" method="post">
+                    <form name=formulaire action='../Pages/ModificationJoueurs.php' method="post">
                         <input type="hidden" name="Licence" value="<?php echo $lines['NumLicence'];?>">
                         <input type="submit" value="Modifier" class="BoutonFormulaire" onclick="formulaire.action='../Pages/ModificationJoueurs.php'; return true;">
                         <input type="submit" value="Supprimer" class="BoutonFormulaire" onclick="formulaire.action='../Pages/SuppressionJoueurs.php'; return true;">
