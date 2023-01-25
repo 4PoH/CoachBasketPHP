@@ -116,3 +116,50 @@ SET id_statut = statut_saisi
 where numLicence = numLicence_saisi
 
 
+/*selectionner les joueurs qui ont participer à des match trié par la titularisation*/
+select joueur.nom, joueur.NumLicence, joueur.PostePref, participer.Titulaire, adversaire.nom as nomAdversaire, rencontre.IDRencontre
+from joueur, participer, rencontre, adversaire
+where joueur.NumLicence = participer.NumLicence 
+and participer.IdRencontre = rencontre.IdRencontre 
+and rencontre.idAdversaire = adversaire.idAdversaire
+and rencontre.IDRencontre = '1' /*exemple */
+order by participer.Titulaire DESC;
+
+
+create or REPLACE function calcul_p_rencontre(idR in rencontre.IDRencontre%type ) return number is
+nbv number;
+nbt number;
+begin
+select COUNT(*) into nbv
+from rencontre
+where ScoreEquipe > ScoreAdverse
+
+SELECT COUNT(*) INTO nbt
+from rencontre
+
+RETURN nbv*100/nbt
+end;
+
+--Pourcentage de victoire de l'équipe--
+SELECT round(count(ScoreEquipe)*100/(select COUNT(*) from rencontre)) as pourcentage
+from rencontre
+where ScoreEquipe > ScoreAdverse
+
+--Pourcentage de match perdu par l'équipe--
+SELECT round(count(ScoreEquipe)*100/(select COUNT(*) from rencontre)) as pourcentage
+from rencontre
+where ScoreEquipe < ScoreAdverse
+
+--Moyenne de point marqué par l'équipe durant la saison--
+SELECT round(avg(ScoreEquipe)) from rencontre
+
+--Récuperer le nombre de match titularise des joueurs dans l'ordre croisant
+SELECT participer.NumLicence, joueur.Nom, joueur.Prenom, COUNT(participer.Titulaire) as nbtitularisation
+from participer, joueur
+GROUP by participer.NumLicence, joueur.Nom, joueur.Prenom
+ORDER by participer.Titulaire DESC 
+
+--mise jour information d'un joueur donnné à partir de son id--
+UPDATE joueur
+set 
+where joueur.licence = :numLicence
