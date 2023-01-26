@@ -30,10 +30,10 @@
     ///Exécution de la requete requete
     if($requeteUpdateRencontre->execute()){
         echo "L'insertion a bien été prise en compte";
-        //header('Location: ../Pages/HistoriqueRencontre.php');
+        header('Location: ../Pages/HistoriqueRencontre.php');
     }else{
         $requeteUpdateRencontre->DebugDumpParams();
         echo "L'insertion a échouée";
-        //echo '<META http-equiv="refresh" content="2; URL=../Pages/HistoriqueRencontre.php">';
+        echo '<META http-equiv="refresh" content="2; URL=../Pages/HistoriqueRencontre.php">';
     }
 ?>

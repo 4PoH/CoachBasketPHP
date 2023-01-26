@@ -40,7 +40,7 @@
         
         <?php require '../FonctionPHP/header.php'; ?>
 
-        <div class="TitrePageConsultation">
+        <div class="Titre">
             <h1>Historique Rencontre</h1>
         </div>
 
