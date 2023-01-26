@@ -3,40 +3,44 @@
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)
-    $req = $linkpdo->prepare('  INSERT INTO rencontre(IdRencontre, LieuRencontre, Domicile, DateRencontre, HeureRencontre, ScoreEquipe, ScoreAdverse)
-                                VALUES(:p_IdRencontre, :p_lieuRencontre, :p_domicile, :p_dateRencontre, :p_heureRencontre, :p_scoreEquipe, :p_scoreAdverse)');
+    $requeteInsertionRencontre = $linkpdo->prepare('  INSERT INTO rencontre(LieuRencontre, Domicile, DateRencontre, HeureRencontre, ScoreEquipe, ScoreAdverse, IdAdversaire)
+                                VALUES(:p_lieuRencontre, :p_domicile, :p_dateRencontre, :p_heureRencontre, :p_scoreEquipe, :p_scoreAdverse, :p_IdAdversaire)');
     
-    ///Liens entre variables PHP et marqueurs
-    $req->bindParam(':p_IdRencontre', $_POST['IdRencontre']);
-    $req->bindParam(':p_lieuRencontre', $_POST['LieuRencontre']);
-    $req->bindParam(':p_domicile', $_POST['Domicile']);
-    $req->bindParam(':p_dateRencontre', $_POST['DateRencontre']);
-    $req->bindParam(':p_heureRencontre', $_POST['HeureRencontre']);
-    $req->bindParam(':p_scoreEquipe', $_POST['ScoreEquipe']);
-    $req->bindParam(':p_scoreAdverse', $_POST['ScoreAdverse']);
-    
-    
-    ///Exécution de la requête
-    $req->execute();
-                        
-    require '../FonctionPHP/header.php';
-?>
+    $requeteIdAdversaire = $linkpdo->prepare(' SELECT adversaire.idadversaire FROM adversaire WHERE adversaire.nom = :p_NomAdversaire');
 
-<body>
-    <div class="">
-        <ul class="RetourJoueur">
-            <?php foreach ($req as $lines) { ?>
-                <li>
-                    <img src="" alt="Photo de <?php echo($lines['Nom'].' '.$lines['Prenom']); ?>">
-                    <p><?php echo $lines['NumLicence'];?></p>
-                    <p><?php echo $lines['Nom'];?></p>
-                    <p><?php echo $lines['Prenom'];?></p>
-                    <p><?php echo $lines['DateNaissance'];?></p>
-                    <p><?php echo $lines['Taille'];?></p>
-                    <p><?php echo $lines['Poids'];?></p>
-                    <p><?php echo $lines['PostePref'];?></p>
-                </li>    
-            <?php } ?>
-        </ul>
-    </div>
-</body>
+    ///Liens entre variables PHP et marqueurs
+    $requeteIdAdversaire->bindParam(':p_NomAdversaire', $_POST['Adversaire']);
+
+    ///Exécution de la requete requete
+    if($requeteIdAdversaire->execute()){
+        echo "L'id adversaire a ete trouve";
+    } else {
+        $requeteInsertionRencontre->DebugDumpParams();
+        echo "id adversaire non trouve";
+    }
+
+    $Id = $requeteIdAdversaire->fetchAll();
+
+    $IdAdversaire = $Id[0][0];
+    echo $IdAdversaire;
+
+    $requeteInsertionRencontre->bindParam(':p_lieuRencontre', $_POST['LieuRencontre']);
+    $requeteInsertionRencontre->bindParam(':p_domicile', $_POST['Domicile']);
+    $requeteInsertionRencontre->bindParam(':p_dateRencontre', $_POST['DateRencontre']);
+    $requeteInsertionRencontre->bindParam(':p_heureRencontre', $_POST['HeureRencontre']);
+    $requeteInsertionRencontre->bindParam(':p_scoreEquipe', $_POST['ScoreEquipe']);
+    $requeteInsertionRencontre->bindParam(':p_scoreAdverse', $_POST['ScoreAdverse']);
+    $requeteInsertionRencontre->bindParam(':p_IdAdversaire', $IdAdversaire);
+    
+    
+    
+    ///Exécution de la requete requete
+    if($requeteInsertionRencontre->execute()){
+        echo "L'insertion a bien été prise en compte";
+        //header('Location: ../Pages/Licencies.php');
+    }else{
+        $requeteInsertionRencontre->DebugDumpParams();
+        echo "L'insertion a échouée";
+        //echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
+    }
+?>
