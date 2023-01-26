@@ -177,12 +177,16 @@ where IdRecontre = :p_idrencontre;
 Delete from rencontre
 where IdRecontre = :p_idrencontre;
 
---mise jour information d'une rencontre donnné à partir de son id--
+--Insertion d'un adversaire--
+insert into adverdaire(Nom, lienLogo)
+values(:p_nomAdversaire, :p_logo);
+
+--mise jour information d'un adversaire donnné à partir de son id--
 UPDATE adverdaire
 set nom = :p_nom , LienLogo = :lienlogo
 where IdAdversaire = :p_idAdversaire;
 
---suppression rencontre a partir de son id--
+--suppression adversaire a partir de son id--
 Delete from adverdaire
 where IdAdversaire = :p_idAdversaire;
 
@@ -223,7 +227,40 @@ and IdRencontre = p_IdRencontre
 
 --supppresion dans la table parciper
 delete participer
-where numLicence = p_numLicence;
+where numLicence = p_numLicence
+and IdRencontre = p_IdRencontre;
 
 INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Photo, Taille, Poids, PostePref, Commentaire, idStatus)
-    VALUES(:numLicence, :prenom, :nom, :dateN, :photo, :taille, :poids, :postePref, :commentaire, :statut)
+    VALUES(:numLicence, :prenom, :nom, :dateN, :photo, :taille, :poids, :postePref, :commentaire, :statut);
+
+SELECT joueur.*
+from participer, joueur
+where joueur.NumLicence = participer.NumLicence
+and joueur.idStatut = 1
+and participer.NumLicence is null;
+
+
+SELECT joueur.*
+from joueur
+WHERE idStatut = 1
+UNION
+SELECT joueur.*
+from participer, joueur,rencontre
+where joueur.NumLicence = participer.NumLicence
+and participer.IdRencontre = rencontre.IdRencontre
+and joueur.idStatut = 1
+and rencontre.IdRencontre = 1
+AND participer.NumLicence is null;
+
+--requete qui affiche les joueurs qui ne sont pas titulaire pour un match donné--
+SELECT joueur.*
+FROM joueur
+WHERE NOT EXISTS (SELECT * FROM participer WHERE joueur.NumLicence = participer.NumLicence and participer.IdRencontre = 1)
+and idStatut = 1;
+
+--requete qui affiche les joueurs qui sont titulaire pour un match donné--
+
+SELECT joueur.*
+FROM joueur
+WHERE EXISTS (SELECT * FROM participer WHERE joueur.NumLicence = participer.NumLicence and participer.IdRencontre = 1)
+and idStatut = 1;
