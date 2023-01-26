@@ -24,7 +24,7 @@ if (!empty($_POST['nomutilisateur']) && !empty($_POST['motdepasse'])) {
     if (password_verify($_POST['motdepasse'], $user[0]['motdepasse'])) {
         session_start();
         $_SESSION['connecte'] = 1;
-        header('Location: ../Pages/Accueil.php');
+        header('Location: ../Pages/Index.php');
         exit();
     } else {
         $erreur = "Identifiants incorrects";
@@ -33,7 +33,7 @@ if (!empty($_POST['nomutilisateur']) && !empty($_POST['motdepasse'])) {
 
 require '../FonctionPHP/auth.php';
 if (est_connecte()){
-    header('Location:../Pages/Accueil.php');
+    header('Location:../Pages/Index.php');
     exit();
 }
 

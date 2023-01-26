@@ -3,7 +3,7 @@
 <header class="header">
     <nav>
         <ul class="Menu">
-            <li><a href="../Pages/Accueil.php">Coach Basket Assistant</a></li>
+            <li><a href="../Pages/Index.php">Coach Basket Assistant</a></li>
             <li class="menu-deroulant">
                 <a href="../Pages/Licencies.php">Joueur</a>
                 <ul class="sous-menu">
