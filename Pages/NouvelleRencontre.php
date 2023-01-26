@@ -32,7 +32,7 @@
         <h1>Nouvelle Rencontre</h1>
     </div>
 
-    <div>
+    <div class="Corps">
         <form name="formu" action="../RequetePHP/InsertionRencontre.php" method="post">
             <div class="Formulaire">
             <div class="LigneFormulaire">

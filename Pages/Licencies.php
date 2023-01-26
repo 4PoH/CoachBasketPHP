@@ -1,4 +1,7 @@
 <?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
+    
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)
@@ -17,6 +20,15 @@
         require '../FonctionPHP/connBDD.php';
         require '../FonctionPHP/header.php'
     ?>
+
+    <!DOCTYPE HTML>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Licencié(e)s</title>
+        <link rel="stylesheet" href="/CoachBasketPHP/CSS/Site.css">
+    </head>
+    <body>
 
     <div class="Titre">
         <h1>Nos licencié(e)s</h1>
@@ -44,7 +56,7 @@
                     <p><?php echo $lines['PostePref'];?></p>
                     <p><?php echo $lines['Statut'];?></p>
                 </div>
-                <div>
+                <div class="conteneurBouton">
                     <form name=formu_modification action='../Pages/ModificationJoueurs.php' method="post">
                         <input type="hidden" name="Licence" value="<?php echo $lines['NumLicence'];?>">
                         <input type="submit" value="Modifier" class="BoutonFormulaire">

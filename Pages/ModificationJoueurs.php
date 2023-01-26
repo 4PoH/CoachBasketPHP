@@ -1,4 +1,6 @@
 <?php
+    require '../FonctionPHP/auth.php';
+    forcer_utilisateur_connecte();
     require '../FonctionPHP/connBDD.php';
 
     ///Préparation de la requête sans les variables (marqueurs : nominatifs)

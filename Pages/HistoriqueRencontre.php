@@ -91,15 +91,15 @@
                             </div>
                         </div>
                     
-                        <div>                                
+                        <div class="conteneurBouton">
+                            <form name=formu_participer action='../Pages/NoteRencontre.php' method="post">
+                                <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
+                                <input type="submit" value="Feuille de match" class="BoutonFormulaire">
+                            </form>
+                                
                             <form name=formu_modification action='../Pages/ModificationRencontre.php' method="post">
                                 <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
                                 <input type="submit" value="Modifier" class="BoutonFormulaire">
-                            </form>
-
-                            <form name=formu_suppression action='../Pages/SuppressionRencontre.php' method="post">
-                                <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
-                                <input type="submit" value="Supprimer" class="BoutonFormulaire">
                             </form>
                         </div>
                     </div>
@@ -148,15 +148,15 @@
                             </div>
                         </div>
                     
-                        <div>                                
+                        <div class="conteneurBouton">                                
+                        <form name=formu_participer action='../Pages/NoteRencontre.php' method="post">
+                                <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
+                                <input type="submit" value="Feuille de match" class="BoutonFormulaire">
+                            </form>
+                                
                             <form name=formu_modification action='../Pages/ModificationRencontre.php' method="post">
                                 <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
                                 <input type="submit" value="Modifier" class="BoutonFormulaire">
-                            </form>
-
-                            <form name=formu_suppression action='../Pages/SuppressionRencontre.php' method="post">
-                                <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
-                                <input type="submit" value="Supprimer" class="BoutonFormulaire">
                             </form>
                         </div>
                     </div>

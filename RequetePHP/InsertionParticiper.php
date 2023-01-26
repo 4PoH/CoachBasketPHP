@@ -25,7 +25,7 @@
     if($requeteInsertionPartiper->execute()){
         echo "L'insertion a bien été prise en compte";
         header('Location: ../Pages/Licencies.php');
-    }else{
+    } else {
         $requeteInsertionPartiper->DebugDumpParams();
         echo "L'insertion a échouée";
         echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';

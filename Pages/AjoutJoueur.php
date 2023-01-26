@@ -37,7 +37,7 @@
         $date = date('Y-m-d');
     ?>
 
-    <div>
+    <div class="Corps">
         <form name=formu action="ajoutJoueur.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
@@ -83,9 +83,7 @@
             <div class="DivBoutonFormulaire">
                 <input type="reset" name="" value="Vider" class="BoutonFormulaire">
                 <input type="submit" name="" value="Ajouter" class="BoutonFormulaire" onclick="formu.action='../RequetePHP/InsertionJoueur.php'; return true;">
-                <input type="submit" name="" value="Rechercher" class="BoutonFormulaire">
-                <input type="submit" name="" value="Modifier" class="BoutonFormulaire">
-                <input type="submit" name="" value="Supprimer" class="BoutonFormulaire">
+                
             </div>
 
             </form>

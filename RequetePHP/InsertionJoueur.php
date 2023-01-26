@@ -13,18 +13,6 @@
     $statut = $_POST['statut'];
 
     require '../FonctionPHP/connBDD.php';
-    
-    //Visualisation du contenu des variables
-    echo $numLicence."\n";
-    echo $nom."\n";
-    echo $prenom."\n";
-    echo $dateN."\n";
-    //echo $photo."\n";
-    echo $taille."\n";
-    echo $poids."\n";
-    echo $postePref."\n";
-    echo $commentaire."\n";
-    echo $statut."\n";
 
     $requeteStatut = $linkpdo->prepare('SELECT idStatut
                                         FROM statut

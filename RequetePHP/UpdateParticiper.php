@@ -1,19 +1,28 @@
 <?php
     require '../FonctionPHP/connBDD.php';
-    $Licence = $_POST['Licence'];
-    $Rencontre = $_POST['idRencontre'];
 
-    $requeteUpdateJoueurs = $linkpdo->prepare(' UPDATE participer
-                                                set titulaire = p_titulaire, notation = p_notation
-                                                where numLicence = p_numLicence
-                                                and IdRencontre = p_IdRencontre');
+    $requeteInsertionPartiper = $linkpdo->prepare(' UPDATE participer
+                                                    SET titulaire = :p_Titulaire,
+                                                        notation = :p_Notation
+                                                    WHERE numLicence = :p_NumLicence
+                                                    AND IdRencontre = :p_IdRencontre');
 
     /// Affectation des paramètres de la requetes
-    $requeteInsertionPartiper->bindParam(':p_titulaire', $titulaire);
-    $requeteInsertionPartiper->bindParam(':p_notation', $notation);
-    $requeteInsertionPartiper->bindParam(':p_numLicence', $numLicence);
-    $requeteInsertionPartiper->bindParam(':p_idRencontre', $idRencontre);
+    $Titulaire = $_POST['Titulaire'];
+    $Notation = $_POST['Notation'];
 
-    $requeteUpdateJoueurs->execute();
-    //header('Location: ../Pages/Licencies.php');
+    $requeteInsertionPartiper->bindParam(':p_Titulaire', $Titulaire);
+    $requeteInsertionPartiper->bindParam(':p_Notation', $Notation);
+    $requeteInsertionPartiper->bindParam(':p_NumLicence', $_POST['NumLicence']);
+    $requeteInsertionPartiper->bindParam(':p_IdRencontre', $_POST['IdRencontre']);
+
+    ///Exécution de la requete requete
+    if($requeteInsertionPartiper->execute()){
+        echo "L'insertion a bien été prise en compte";
+        header('Location: ../Pages/HistoriqueRencontre.php');
+    }else{
+        $requeteInsertionPartiper->DebugDumpParams();
+        echo "L'insertion a échouée";
+        echo '<META http-equiv="refresh" content="2; URL=../Pages/HistoriqueRencontre.php">';
+    }
 ?>

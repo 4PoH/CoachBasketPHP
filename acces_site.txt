@@ -1,0 +1,3 @@
+L'url de notre site est : coachbasket.go.yj.fr
+L'identifiant est : Admin
+Mot de passe : $iutinfo

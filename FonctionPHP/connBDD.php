@@ -1,5 +1,5 @@
 <?php
-//Variables pour les données de connexion à la base de donnée
+    //Variables pour les données de connexion à la base de donnée
     $server = 'localhost';
     $db = 'coachbasket';
     $login = 'root';

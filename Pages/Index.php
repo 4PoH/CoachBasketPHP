@@ -86,9 +86,10 @@
                         </div>
                     </div>
                 
-                    <div class="ButtonNote">
-                        <button type="button">Ajouter des notes sur ce match</button>
-                    </div>
+                    <form name=formu_participer action='../Pages/NoteRencontre.php' method="post">
+                        <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
+                        <input type="submit" value="Feuille de match" class="BoutonFormulaire">
+                    </form>
                 </div>
 
             <?php } else { ?>
@@ -105,12 +106,12 @@
                 <div class="DivMatch <?php echo $resultat; ?>">             
                     <div class="DivEquipe">
                         <div class="DivClubEtImage">
-                            <div class="DivImage">
-                                <img src="<?php echo $resultatRencontre[$nbLignes][5]; ?> " alt="Logo de L'équipe adverse" class="LogoEquipe">
-                            </div>
-
                             <div class="TitreEquipe">
                                 <h1> <?php echo $resultatRencontre[$nbLignes][4]; ?> </h1>
+                            </div>
+
+                            <div class="DivImage">
+                                <img src="<?php echo $resultatRencontre[$nbLignes][5]; ?> " alt="Logo de L'équipe adverse" class="LogoEquipe">
                             </div>
                         </div>
 
@@ -121,13 +122,15 @@
 
                     <div class="DivEquipe">
                         <div class="DivClubEtImage">
+                            <div class="DivImage">
+                                <img src="<?php echo $resultatRencontre[$nbLignes][1]; ?>" alt="Logo de notre club" class="LogoEquipe">
+                            </div>
+
                             <div class="TitreEquipe">
                                 <h1> <?php echo $resultatRencontre[$nbLignes][0]; ?> </h1>
                             </div>
 
-                            <div class="DivImage">
-                                <img src="<?php echo $resultatRencontre[$nbLignes][1]; ?>" alt="Logo de notre club" class="LogoEquipe">
-                            </div>
+                            
                         </div>
 
                         <div class="DivScore">
@@ -135,16 +138,13 @@
                         </div>
                     </div>
                 
-                    <div class="ButtonNote">
-                        <button type="button">Ajouter des notes sur ce match</button>
-                    </div>
+                    <form name=formu_participer action='../Pages/NoteRencontre.php' method="post">
+                        <input type="hidden" name="IdRencontre" value="<?php echo $resultatRencontre[$nbLignes][8];?>">
+                        <input type="submit" value="Feuille de match" class="BoutonFormulaire">
+                    </form>
                 </div>
             <?php } ?>
     <?php $nbLignes += 1;} ?>
-
-    <div class="Titre">
-        <h1>Nos 3 joueurs phare</h1>
-    </div>
 
     <div class="Titre">
         <h1>Statistiques</h1>

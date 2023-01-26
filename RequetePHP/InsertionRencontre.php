@@ -22,7 +22,6 @@
     $Id = $requeteIdAdversaire->fetchAll();
 
     $IdAdversaire = $Id[0][0];
-    echo $IdAdversaire;
 
     $requeteInsertionRencontre->bindParam(':p_lieuRencontre', $_POST['LieuRencontre']);
     $requeteInsertionRencontre->bindParam(':p_domicile', $_POST['Domicile']);
@@ -37,10 +36,10 @@
     ///Exécution de la requete requete
     if($requeteInsertionRencontre->execute()){
         echo "L'insertion a bien été prise en compte";
-        //header('Location: ../Pages/Licencies.php');
+        header('Location: ../Pages/Licencies.php');
     }else{
         $requeteInsertionRencontre->DebugDumpParams();
         echo "L'insertion a échouée";
-        //echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
+        echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
     }
 ?>
