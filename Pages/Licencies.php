@@ -45,12 +45,12 @@
                     <p><?php echo $lines['Statut'];?></p>
                 </div>
                 <div>
-                    <form name=formu_modification action=' ../Pages/ModificationJoueurs.php ' method="post">
+                    <form name=formu_modification action='../Pages/ModificationJoueurs.php' method="post">
                         <input type="hidden" name="Licence" value="<?php echo $lines['NumLicence'];?>">
                         <input type="submit" value="Modifier" class="BoutonFormulaire">
                     </form>
 
-                    <form name=formu_suppression action=' ../Pages/SuppressionJoueurs.php ' method="post">
+                    <form name=formu_suppression action='../Pages/SuppressionJoueurs.php' method="post">
                         <input type="hidden" name="Licence" value="<?php echo $lines['NumLicence'];?>">
                         <input type="submit" value="Supprimer" class="BoutonFormulaire">
                     </form>

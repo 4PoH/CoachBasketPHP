@@ -12,13 +12,9 @@
     $requeteStatut = $linkpdo->prepare('SELECT statut.Libelle FROM statut');
     
     $requeteNombreStatut = $linkpdo->prepare('SELECT count(statut.Libelle) AS NB FROM statut');
-    
-    $requeteSuppression = $linkpdo->prepare('DELETE FROM joueur WHERE joueur.NumLicence = :p_numLicence');
-
 
     ///Liens entre variables PHP et marqueurs
-    $Licence = $_POST['Licence'];
-    $requeteJoueurs->bindParam(':p_numLicence', $Licence);
+    $requeteJoueurs->bindParam(':p_numLicence', $_POST['Licence']);
 
     ///Exécution de la requête
     $requeteStatut->execute();
@@ -29,33 +25,10 @@
     $listeStatut = $requeteStatut->fetchAll();
     $Joueurs = $requeteJoueurs->fetchAll();
     $NbStatut = $requeteNombreStatut->fetchAll();
-
-    if(isset($_POST['Supprimer'])) {
-        $requeteSuppression->bindParam(':p_numLicence', $Licence);
-        
-        if($requeteSuppression->execute()){
-            echo "La suppression a bien été prise en compte";
-        }else{
-            $requeteSuppression->DebugDumpParams();
-            echo "La suppression a échouée";
-        }
-        //echo '<META http-equiv="refresh" content="2; URL=../Pages/Licencies.php">';
-        //header('Location: ../Pages/Licencies.php');
-    }
-
-    //Quand on clique sur le bouton annuler
-    if(isset($_POST['Annuler'])) {
-        header('Location: ../Pages/Licencies.php');
-    }
-
-    echo $_POST['Licence'];
-    echo  $Licence;
-
 ?>
 
 <body>
     <?php
-        require '../FonctionPHP/connBDD.php';
         require '../FonctionPHP/header.php'
     ?>
 
@@ -64,7 +37,7 @@
     </div>
 
     <div class="container">
-        <form name=formulaire action="../Pages/SuppressionJoueurs.php" method="post">
+        <form name=formulaire action="../RequetePHP/DeleteJoueurs.php" method="post">
             <div class="Formulaire">
                 <div class="LigneFormulaire">
                     <p class="Libelle">Numéro de numéro de licence : <?php echo $Joueurs[0][0];?></p>
@@ -100,8 +73,9 @@
             </div>
 
             <div class="DivBoutonFormulaire">
-                <input type="submit" name="Supprimer" value="Supprimer" class="BoutonFormulaire" onclick="formulaire.action='../Pages/SuppressionJoueurs.php'; return true;">
-                <input type="submit" name="Annuler" value="Annuler" class="BoutonFormulaire" onclick="formulaire.action='../Pages/Licencies.php'; return true;">
+                <input type="hidden" name="Licence" value="<?php echo $Joueurs[0][0];?>">
+                <input type="submit" name="Supprimer" value="Supprimer" class="BoutonFormulaire">
+                <a name="Annuler" href="../Pages/Licencies.php">Annuler</a>
             </div>
         </form>
     </div>
