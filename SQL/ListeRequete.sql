@@ -161,9 +161,69 @@ ORDER by participer.Titulaire DESC
 
 --mise jour information d'un joueur donnné à partir de son id--
 UPDATE joueur
-set Nom = :p_nom , Prenom = :p_prenom, DateNaissance = : p_dateN, Photo = :p_photo, Taille = :p_taille, Poids = :p_poids, PostePref = :p_postePref, Commentaire = :p_commentaire, idStatus = :p_statut
+set Nom = :p_nom , Prenom = :p_prenom, DateNaissance = : p_dateN, Photo = :p_photo, Taille = :p_taille, Poids = :p_poids, PostePref = :p_postePref, Commentaire = :p_commentaire, idStatut = :p_statut
 where joueur.Numlicence = :p_numLicence;
 
---suppression joueur a partir de son numLicens--
+--suppression joueur a partir de son numLicense--
 Delete from joueur
 where numLicense = :p_numLicence;
+
+--mise jour information d'une rencontre donnné à partir de son id--
+UPDATE rencontre
+set lieuRencontre = :p_lieuRencontre , Domicile = :p_domicile, DateRencontre = : p_dateR, HeureRencontre = :p_heureRencontre, ScoreEquipe = :p_scoreEquipe, ScoreAdverse = :p_scoreAdverse, idAdversaire = p_idAdversaire
+where IdRecontre = :p_idrencontre;
+
+--suppression rencontre a partir de son id--
+Delete from rencontre
+where IdRecontre = :p_idrencontre;
+
+--mise jour information d'une rencontre donnné à partir de son id--
+UPDATE adverdaire
+set nom = :p_nom , LienLogo = :lienlogo
+where IdAdversaire = :p_idAdversaire;
+
+--suppression rencontre a partir de son id--
+Delete from adverdaire
+where IdAdversaire = :p_idAdversaire;
+
+--Bonus--
+--mise jour information d'une status donnné à partir de son id--
+UPDATE statut
+set libelleStatut = :p_libelleStatut
+where idStatut = :p_idStatut;
+
+--suppression rencontre a partir de son id--
+Delete from statut
+where idStatut = :p_idStatut;
+
+--Trigger pour verifier le nombre max de joueur soit 5 titulaire pendant un match--
+create or replace trigger IU_Titulaire after insert on participer
+for each row
+declare
+    nb_titulaire number;
+begin
+    select count(*) into nb_titulaire
+    from participe
+    where titulaire =: new.titulaire;
+    if nb_titulaire > 5 then
+        Raise_Application_error(-20005, "Un mach ne peut avoir que maximun 5 titulaire");
+    end if;
+end;
+
+
+--insertion dans la table participer
+insert into participer(titulaire, Notation , NumLicence, IdRecontre)
+values(:p_titulaire, :p_notation, :p_numLicence, :p_IdRencontre);
+
+--mise a jour dans la table participer
+update participer
+set titulaire = p_titulaire, notation = p_notation
+where numLicence = p_numLicence
+and IdRencontre = p_IdRencontre
+
+--supppresion dans la table parciper
+delete participer
+where numLicence = p_numLicence;
+
+INSERT INTO joueur(NumLicence, Prenom, Nom, DateNaissance, Photo, Taille, Poids, PostePref, Commentaire, idStatus)
+    VALUES(:numLicence, :prenom, :nom, :dateN, :photo, :taille, :poids, :postePref, :commentaire, :statut)
