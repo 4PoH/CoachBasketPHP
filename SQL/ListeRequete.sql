@@ -45,75 +45,81 @@ WHERE soundex(NomAdversaire) = soundex(nomAdversaire_saisi)
 SELECT *
 from joueur, participe
 WHERE joueur.numLicence = participe.numLicence
-and participe.notation > 3
+and participe.notation > 3;
 
 /* Afficher la liste des matchs dont l'équipe à gagner*/
 SELECT *
 from rencontre
-where scoreEquipe > scoreAdverse
+where scoreEquipe > scoreAdverse;
 
 /* Afficher la liste des matchs dont l'équipe à perdu*/
 SELECT *
 from rencontre
-where scoreEquipe < scoreAdverse
+where scoreEquipe < scoreAdverse;
 
 /* Afficher la liste des matchs dont l'équipe à fait match nul*/
 SELECT *
 from rencontre
-where scoreEquipe = scoreAdverse
+where scoreEquipe = scoreAdverse;
 
 /* Afficher le nombre de match gagné au total*/
 SELECT count(IdRencontre)
 from rencontre
-where scoreEquipe > scoreAdverse
+where scoreEquipe > scoreAdverse;
 
 /* Afficher le nombre de match perdue au total*/
 SELECT count(IdRencontre)
 from rencontre
-where scoreEquipe < scoreAdverse
+where scoreEquipe < scoreAdverse;
 
 /* Afficher la liste des status*/
 SELECT statut.libelleStatut
-from statut
+from statut;
 
 /* Supprimer un joueur à partir son numéro de licence*/
-delete from joueur where numLicence = numLicence_saisi
+delete from joueur where numLicence = numLicence_saisi;
 
 /* Supprimer un joueur à partir son nom*/
-delete from joueur where soundex(nom) = soundex(nom_saisi)
+delete from joueur where soundex(nom) = soundex(nom_saisi);
 
 /* mettre à jour le poste prefere à partir son numéro de license*/
 UPDATE joueur
 SET PostePref = PostePref_saisi
-where NumLicence = numLicence_saisi
+where NumLicence = numLicence_saisi;
 
 /* mettre à jour le poste prefere à partir son nom*/
 UPDATE joueur
 SET PostePref = PostePref_saisi
-where soundex(nom) = soundex(nom_saisi)
+where soundex(nom) = soundex(nom_saisi);
 
 /* Afficher la moyenne du nombre de match jouer pour un joueur donné*/
 SELECT avg(rencontre.IdRencontre)
 from rencontre, participer, joueur
 WHERE rencontre.IdRencontre = participer.IdRecontre
 AND participer.Titulaire = 1
-AND joueur.Nom = nom_saisi
+AND joueur.Nom = nom_saisi;
 
 /* Afficher la moyenne d'étoiles des joueurs pour un match donné*/
-SELECT avg(notation)
-from participe, rencontre
-where participe.IdRecontre = rencontre.IdRecontre
-and LibelleRencontre = libeller_saisi
+SELECT avg(participer.notation)
+from participer, rencontre
+where participer.IdRecontre = rencontre.IdRecontre
+and LibelleRencontre = libeller_saisi;
+
+/* Afficher la moyenne d'étoiles des joueurs*/
+SELECT round(avg(participer.notation),2)
+from participer, rencontre
+where participer.IdRencontre = rencontre.IdRencontre
+and participer.Notation > 0;
 
 /* metter a jour le statut d'un joueur donné*/
 UPDATE joueur
 SET id_statut = statut_saisi
-where numLicence = numLicence_saisi
+where numLicence = p_numLicence;
 
 /* metter a jour le statut d'un joueur donné*/
 UPDATE joueur
 SET id_statut = statut_saisi
-where numLicence = numLicence
+where numLicence = p_numLicence;
 
 
 /*selectionner les joueurs qui ont participer à des match trié par la titularisation*/
